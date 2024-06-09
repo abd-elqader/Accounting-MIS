@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\CurrencyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard\Switcherpage;
 
@@ -13,18 +14,10 @@ use App\Http\Livewire\Dashboard\Switcherpage;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('layouts.index');
+})->name('home');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
-    Route::get('/', function () {
-        return view('livewire.dashboard.index');
-    })->name('home');
-
-    Route::view('customers', 'viewName');
-    Route::view('servicesAndProducts', 'viewName');
-    Route::view('suppliers', 'viewName');
-    Route::view('accounting', 'viewName');
-    Route::view('Reports', 'viewName');
-    Route::view('usersAndPermissions', 'viewName');
-    Route::get('swithcer', Switcherpage::class);
-
+    Route::resource('currencies', CurrencyController::class);
 });
