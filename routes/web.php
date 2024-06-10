@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\Web\CurrencyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard\Switcherpage;
+use App\Http\Controllers\Web\CountryController;
+use App\Http\Controllers\Web\CurrencyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +22,5 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('currencies', CurrencyController::class);
+    Route::resource('countries', CountryController::class);
 });
