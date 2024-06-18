@@ -22,7 +22,7 @@ class DepartmentStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|unique:currencies,name',
+            'name' => 'required|string',
         ];
     }
 
