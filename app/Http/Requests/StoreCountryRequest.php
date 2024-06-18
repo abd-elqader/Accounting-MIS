@@ -25,6 +25,7 @@ class StoreCountryRequest extends FormRequest
             'name' => 'required|string',
             'slug' => 'required|string',
             'code' => 'required|string',
+            'currency_id' => 'required|integer|exists:currencies,id',
         ];
     }
 
@@ -34,6 +35,7 @@ class StoreCountryRequest extends FormRequest
             'name' => __("app.company_name"),
             'slug' => __("app.company_code"),
             'code' => __("app.company_slug"),
+            'currency_id' => __("app.currency"),
         ];
     }
 }

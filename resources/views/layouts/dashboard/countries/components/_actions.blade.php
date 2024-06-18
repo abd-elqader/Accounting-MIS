@@ -3,7 +3,7 @@
         <button data-bs-toggle="dropdown" class="btn btn-primary blue-logo btn-block" aria-expanded="false">@lang('app.details')
             <i class="icon ion-ios-arrow-down tx-11 mg-l-3"></i>
         </button>
-        <div class="dropdown-menu" style="">
+        <div class="dropdown-menu">
             
                 <a href="{{route('countries.show',$model->id)}}" class="dropdown-item">@lang('app.show')</a>
             

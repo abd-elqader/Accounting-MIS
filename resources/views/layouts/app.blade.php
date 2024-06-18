@@ -95,7 +95,7 @@
             $(document).ready(function(){
                 $("body").on("click", "button[name='delete']",function(e){
                     e.preventDefault();
-                    $('#btn_yes').data('href', $(this).parent('form').attr('action'));
+                    $('#btn_yes').data('href', $(this).data('href'));
                     $('.confirm_content').show();
                     
                 });

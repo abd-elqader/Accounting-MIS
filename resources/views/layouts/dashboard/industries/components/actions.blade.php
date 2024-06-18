@@ -1,11 +1,20 @@
-<ul class="list-group list-group-horizontal">
-    <li class="list-group-item">
-        <form method="post" action="{{route('industries.destroy', $model->id)}}">
-            @csrf
-            @method('delete')
-            <button name="delete" type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
-        </form>
-    </li>
-    <li class="list-group-item"><a href="{{ route('industries.edit', $model->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>
-    <li class="list-group-item"><a href="{{ route('industries.show', $model->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li>
-</ul>
+<div>
+    <button data-bs-toggle="dropdown" class="btn btn-primary blue-logo btn-block" aria-expanded="false">@lang('app.actions')
+        <i class="icon ion-ios-arrow-down tx-11 mg-l-3"></i>
+    </button>
+    <div class="dropdown-menu">
+        
+            <a href="{{route('industries.show',$model->id)}}" class="dropdown-item">@lang('app.show')</a>
+        
+
+            <a href="{{route('industries.edit',$model->id)}}" class="dropdown-item">@lang('app.edit')</a>
+        
+
+            <button name="delete" data-href="{{route('industries.destroy', $model->id)}}" role="button" class="dropdown-item">@lang('app.delete')</button>
+        
+    </div>
+</div>
+
+
+
+

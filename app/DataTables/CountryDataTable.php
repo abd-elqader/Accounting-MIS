@@ -79,12 +79,13 @@ class CountryDataTable extends DataTable
     {
         return [
             Column::make('id')->title("#"),
+            Column::make('name')->title(trans('app.name'))->orderable(false),
+            Column::make('code')->title(trans('app.code'))->orderable(false),
+            Column::make('slug')->title(trans('app.slug'))->orderable(false),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center'),
-            Column::make('name')->title(trans('app.name'))->orderable(false),
-            Column::make('code')->title(trans('app.stepper'))->orderable(false),
         ];
 
     }
