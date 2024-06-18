@@ -12,7 +12,7 @@
     <!-- Row -->
     <div class="row">
         <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12"> <!--div-->
-            <form action="{{ route('departments.store') }}" method="post">
+            <form action="{{ route('categories.store') }}" method="post">
                 <div class="card">
                     <div class="card-body">
                         @csrf
@@ -25,11 +25,17 @@
                                     <div class="text-danger"> {{ $message }} </div>
                                 @enderror
                             </div>
+                            <div class="col-lg">
+                                @livewire('dashboard.category', ['field_name'=>'parent_id'])
+                                @error('parent_id')
+                                    <div class="text-danger"> {{ $message }}</div>
+                                @enderror
+                            </div>
                             
                         </div>
 
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer mt-4">
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
                                 <button type="submit" class="btn btn-primary"><i

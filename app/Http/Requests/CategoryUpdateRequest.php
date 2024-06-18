@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DepartmentUpdateRequest extends FormRequest
+class CategoryUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,7 @@ class DepartmentUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'parent_id' => 'nullable|integer|exists:categories,id',
         ];
     }
 
@@ -30,6 +31,7 @@ class DepartmentUpdateRequest extends FormRequest
     {
         return [
             'name' => __("app.name"),
+            'parent_id' => __("app.parent"),
         ];
     }
 }

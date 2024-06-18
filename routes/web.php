@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard\Switcherpage;
 use App\Http\Controllers\Web\CountryController;
@@ -26,4 +27,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('countries', CountryController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('industries', IndustryController::class);
+    Route::resource('categories', CategoryController::class);
 });
