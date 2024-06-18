@@ -2,88 +2,74 @@
 
 namespace App\Services;
 
-use App\Models\Country;
-use App\QueryFilters\CountryFilters;
+use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Builder;
+use App\QueryFilters\CountryFilters;
+use Illuminate\Database\Eloquent\Model;
 
 class CountryService extends BaseService
 {
+    public function __construct(private Country $model){
 
-    public function __construct(
-        public Country $model
-        )
-    {
     }
 
-    public function getModel(): Country
+    public function getModel(): Model
     {
         return $this->model;
     }
 
-    public function queryGet(array $filters = [],array $withRelations = []): builder
+    public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
-        $result = $this->getQuery()->with($withRelations);
-        return $result->filter(new CountryFilters($filters));
+        $country = $this->getModel()->query()->with($withRelations);
+        return (new CountryFilters($filters))->apply($country);
     }
 
-    public function CountryQueryBuilder(array $filters = [], array $withRelations = []): Builder
+    public function getAll(array $filters = [] , array $withRelations =[], $perPage = null ): \Illuminate\Contracts\Pagination\CursorPaginator|\Illuminate\Database\Eloquent\Collection
     {
-        $countries = $this->getQuery()->with($withRelations);
-        return $countries->filter(new CountryFilters($filters));
+        if($perPage)
+            return $this->queryGet(filters: $filters,withRelations: $withRelations)->cursorPaginate($perPage);
+        else
+            return $this->queryGet(filters: $filters,withRelations: $withRelations)->get();
     }
 
-    public function getCountryForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
+    public function getCountriesForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
     {
         return $this->queryGet(filters: $filters)->select(['id','name'])->get();
     }
 
-    public function datatable(array $filters = [], array $withRelations = [])
+    public function store(array $data = []):Country|Model|bool
     {
-        $countries = $this->getQuery()->with($withRelations);
-        return (new CountryFilters($filters))->apply($countries);
-    }
+        // $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
+        $country = $this->getModel()->create($data);
+        if (!$country)
+            return false ;
+        return $country;
+    } //end of store
 
-    /**
-     * create new awb status
-     * @param array $data
-     * @return bool
-     */
-    public function store($data)
-    {
-        return $this->model->create($data);
-    }
-
-    /**
-     * update existing awb status
-     * @param array $data
-     * @param int $id
-     * @return bool
-     * @throws NotFoundException
-     */
-    public function update(int $id, $data): bool
+    public function update(int $id, array $data=[])
     {
         $country = $this->findById($id);
-        $country->update($data);
-        return true;
+        // $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
+        return $country->update($data);
     }
 
     /**
-     * delete existing awb status
-     * @param int $id
-     * @return bool
      * @throws NotFoundException
      */
-    public function destroy(int $id): bool
+    public function destroy($id)
     {
-        $awbStatus = $this->findById($id);
-        $awbStatus->delete();
-        return true;
-    }
+        $country = $this->findById($id);
+        return $country->delete();
+    } //end of delete
 
-    public function findByCode(int $code): Model|Builder|null
+    public function status($id)
     {
-        return $this->getQuery()->where('code',$code)->first();
-    }
+        $country = $this->findById($id);
+        $country->is_active = !$country->is_active;
+        return $country->save();
+
+    }//end of status
+
 }

@@ -12,7 +12,7 @@
 
 
     <!--start filters section -->
-        @include('layouts.dashboard.countries.components._filters')
+        @include('layouts.dashboard.countries.components.filters')
     <!--end filterd section -->
     <!--Row-->
     <!-- Row -->

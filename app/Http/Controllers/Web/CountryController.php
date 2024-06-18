@@ -2,128 +2,96 @@
 
 namespace App\Http\Controllers\Web;
 
-use Exception;
-use App\Models\Country;
-use Illuminate\Http\Request;
-use App\Services\CountryService;
-use Illuminate\Support\Facades\DB;
 use App\DataTables\CountryDataTable;
+use App\DataTables\SitesDataTable;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Exceptions\NotFoundException;
-use App\Http\Requests\StoreCountryRequest;
-use App\Http\Requests\UpdateCountryRequest;
+use App\Http\Requests\CountryStoreRequest;
+use App\Http\Requests\CountryUpdateRequest;
+use App\Http\Requests\Web\SiteStoreRequest;
+use App\Http\Requests\Web\SiteUpdateRequest;
+use App\Services\CountryService;
+use App\Services\SiteService;
+use Exception;
 
 class CountryController extends Controller
 {
-    public function __construct(protected CountryService $countryService)
+    public function __construct(private CountryService $countryService)
     {
+
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(CountryDataTable $countryDataTable, Request $request)
+    public function index(CountryDataTable $dataTable, Request $request)
     {
-        try {
-            $filters = array_filter($request->get('filters', []), function ($value) {
-                return ($value !== null && $value !== false && $value !== '');
-            });
-            $withRelation = [];
+        // userCan(request: $request, permission: 'view_site');
+        $filters = array_filter($request->get('filters', []), function ($value) {
+            return ($value !== null && $value !== false && $value !== '');
+        });
+        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.countries.index');
+    }//end of index
 
-            return $countryDataTable->with(['filters' => $filters, 'withRelation' => $withRelation])->render('layouts.dashboard.countries.index');
+    public function edit(Request $request, $id)
+    {
+        // userCan(request: $request, permission: 'edit_site');
+        try{
+            $site = $this->countryService->findById(id: $id);
+            return view('Dashboard.countries.edit', compact('site'));
+        }catch(Exception $e){
+            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+        }
+        
+    }//end of create
+
+    public function create(Request $request)
+    {
+        // userCan(request: $request, permission: 'create_site');
+        return view('layouts.dashboard.countries.create');
+    }//end of create
+
+    public function store(CountryStoreRequest $request)
+    {
+        // userCan(request: $request, permission: 'create_site');
+        try {
+            $this->countryService->store(data: $request->validated());
+            return redirect()->route('countries.index')->with('message', __('lang.success_operation'));
         } catch (Exception $e) {
-            $toast = [
-                'type' => 'error',
-                'title' => 'error',
-                'message' => $e->getMessage()
-            ];
-            return back()->with('toast', $toast);
+            return redirect()->back()->with('message', $e->getMessage());
         }
-    }
+    }//end of store
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function update(CountryUpdateRequest $request, $id)
     {
-        return view('layouts.dashboard.countries.create', get_defined_vars());
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCountryRequest $request)
-    {
-        DB::beginTransaction();
-        $data = $request->validated();
-        $this->countryService->store($data);
-        DB::commit();
-        $toast = [
-            'type' => 'success',
-            'title' => 'success',
-            'message' => trans('app.success_operation')
-        ];
-        return to_route('countries.index')->with(['toast' => $toast]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Country $country)
-    {
-        return view('layouts.dashboard.countries.show', get_defined_vars());
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(int $id)
-    {
+        // userCan(request: $request, permission: 'edit_site');
         try {
-            $country = $this->countryService->findById(id: $id);
-            return view('layouts.dashboard.countries.edit',  get_defined_vars());
-        } catch (Exception | NotFoundException $exception) {
-            
-            $toast = [
-                'type' => 'error',
-                'title' => 'error',
-                'message' => $exception->getMessage()
-            ];
-            return back()->with('toast', $toast);
-        }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCountryRequest $request, int $id)
-    {
-        try {
-            $data = $request->validated();
-            $this->countryService->update($id, $data);
-            $toast = [
-                'type' => 'success',
-                'title' => 'success',
-                'message' => trans('app.user_updated_successfully')
-            ];
-            return to_route('countries.index')->with('toast', $toast);
+            $this->countryService->update($id, $request->validated());
+            return redirect()->route('countries.index')->with('message', __('lang.success_operation'));
         } catch (\Exception $e) {
-            dd($e);
-            $toast = [
-                'type' => 'error',
-                'title' => 'error',
-                'message' => trans('app.there_is_an_error')
-            ];
-            return back()->with('toast', $toast);
+            return redirect()->back()->with("message", $e->getMessage());
         }
-    }
+    } //end of update
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Country $country)
+    public function destroy(Request $request, $id)
     {
-        $country->delete();
-        return to_route('layouts.dashboard.countries.index')->with('success', __('keywords.deleted_successfully'));
-    }
+        // userCan(request: $request, permission: 'delete_site');
+        try {
+            $result = $this->countryService->destroy($id);
+            if(!$result)
+                return apiResponse(message: trans('lang.not_found'),code: 404);
+            return apiResponse(message: trans('lang.success_operation'));
+        } catch (\Exception $e) {
+            return apiResponse(message: $e->getMessage(),code: 422);
+        }
+    } //end of destroy
+
+    public function show(Request $request, $id)
+    {
+        // userCan(request: $request, permission: 'view_site');
+        try{
+            $currrency = $this->countryService->findById(id: $id);
+            return view('layouts.dashboard.countries.show', compact('country'));
+        }catch(Exception $e){
+            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+        }
+    } //end of show
+
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCountryRequest extends FormRequest
+class CountryUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class StoreCountryRequest extends FormRequest
             'name' => 'required|string',
             'slug' => 'required|string',
             'code' => 'required|string',
-            'currency_id' => 'required|integer|exists:currencies,id',
+            'currency_id' => 'required|string|exists:currencies,id',
         ];
     }
 
@@ -33,8 +33,8 @@ class StoreCountryRequest extends FormRequest
     {
         return [
             'name' => __("app.company_name"),
-            'slug' => __("app.company_code"),
-            'code' => __("app.company_slug"),
+            'slug' => __("app.company_slug"),
+            'code' => __("app.company_code"),
             'currency_id' => __("app.currency"),
         ];
     }
