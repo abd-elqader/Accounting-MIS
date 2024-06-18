@@ -2,84 +2,96 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Currency;
+use App\DataTables\CurrencyDataTable;
+use App\DataTables\SitesDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CurrencyStoreRequest;
+use App\Http\Requests\CurrencyUpdateRequest;
+use App\Http\Requests\Web\SiteStoreRequest;
+use App\Http\Requests\Web\SiteUpdateRequest;
+use App\Services\CurrencyService;
+use App\Services\SiteService;
+use Exception;
+
 class CurrencyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private CurrencyService $currencyService)
     {
-        //
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function index(CurrencyDataTable $dataTable, Request $request)
     {
+        // userCan(request: $request, permission: 'view_site');
+        $filters = array_filter($request->get('filters', []), function ($value) {
+            return ($value !== null && $value !== false && $value !== '');
+        });
+        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.currencies.index');
+    }//end of index
+
+    public function edit(Request $request, $id)
+    {
+        // userCan(request: $request, permission: 'edit_site');
+        try{
+            $site = $this->currencyService->findById(id: $id);
+            return view('Dashboard.currencies.edit', compact('site'));
+        }catch(Exception $e){
+            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+        }
+        
+    }//end of create
+
+    public function create(Request $request)
+    {
+        // userCan(request: $request, permission: 'create_site');
         return view('layouts.dashboard.currencies.create');
-    }
+    }//end of create
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(CurrencyStoreRequest $request)
     {
-        //
-    }
+        // userCan(request: $request, permission: 'create_site');
+        try {
+            $this->currencyService->store(data: $request->validated());
+            return redirect()->route('currencies.index')->with('message', __('lang.success_operation'));
+        } catch (Exception $e) {
+            return redirect()->back()->with('message', $e->getMessage());
+        }
+    }//end of store
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Currency $currency)
+    public function update(CurrencyUpdateRequest $request, $id)
     {
-        //
-    }
+        // userCan(request: $request, permission: 'edit_site');
+        try {
+            $this->currencyService->update($id, $request->validated());
+            return redirect()->route('currencies.index')->with('message', __('lang.success_operation'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+    } //end of update
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Currency $currency)
+    public function destroy(Request $request, $id)
     {
-        //
-    }
+        // userCan(request: $request, permission: 'delete_site');
+        try {
+            $result = $this->currencyService->destroy($id);
+            if(!$result)
+                return apiResponse(message: trans('lang.not_found'),code: 404);
+            return apiResponse(message: trans('lang.success_operation'));
+        } catch (\Exception $e) {
+            return apiResponse(message: $e->getMessage(),code: 422);
+        }
+    } //end of destroy
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Currency $currency)
+    public function show(Request $request, $id)
     {
-        //
-    }
+        // userCan(request: $request, permission: 'view_site');
+        try{
+            $currrency = $this->currencyService->findById(id: $id);
+            return view('layouts.dashboard.currencies.show', compact('currency'));
+        }catch(Exception $e){
+            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+        }
+    } //end of show
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Currency $currency)
-    {
-        //
-    }
 }

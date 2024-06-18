@@ -7,12 +7,12 @@
 @section('content')
 
 {{--    breadcrumb --}}
-    @include('layouts.components.breadcrumb',['title' => trans('app.receivers_page_title'),'first_list_item' => trans('app.receivers'),'last_list_item' => trans('app.all_receivers')])
+    @include('layouts.dashboard.components.breadcrumb',['title' => trans('app.countries_page_title'),'first_list_item' => trans('app.countries'),'last_list_item' => trans('app.all_countries')])
 {{--    end breadcrumb --}}
 
 
     <!--start filters section -->
-        @include('layouts.dashboard.receivers.components._filters')
+        @include('layouts.dashboard.countries.components._filters')
     <!--end filterd section -->
     <!--Row-->
     <!-- Row -->
@@ -22,23 +22,9 @@
                 <div class="card-header">
                     <div class="breadcrumb-header justify-content-between">
                         <div class="left-content">
-                            <a class="btn btn-primary" href="{{route('receivers.create')}}"><i class="fe fe-plus me-2"></i>{{ trans('app.new') }}</a>
-{{--                            <a role="button" href="{{route('receivers-download-template.form')}}" class="btn btn-primary"><i class="fa fa-upload pe-2"></i>@lang('app.import')</a>--}}
-                            <div class="btn-group ms-2 mt-2 mb-2">
-                                <div class="dropdown">
-                                    <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary" data-bs-toggle="dropdown" id="dropdownMenuButton" type="button">@lang('app.actions') <i class="fas fa-caret-down ms-1"></i></button>
-                                    <div class="dropdown-menu tx-13" style="">
-                                        <a class="dropdown-item" href="{{route('receivers-download-template.form')}}"><i class="fa fa-file-import pe-2"></i>@lang('app.import')</a>
-                                        <a class="dropdown-item" href="{{route('receivers.export')}}"><i class="fa fa-file-import pe-2"></i>@lang('app.export')</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <a class="btn btn-primary" href="{{ route('currencies.create') }}"><i
+                                    class="fe fe-plus me-2"></i>@lang('app.create')</a>
                         </div>
-{{--                        <div class="justify-content-center">--}}
-{{--                            <button type="button" class="btn btn-secondary">--}}
-{{--                                <i class="fe fe-download me-1"></i> Download User Data--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="card-body">
@@ -54,44 +40,11 @@
 @endsection
 
 @section('scripts')
-    @include('layouts.components.datatable-scripts')
-
-    {{-- change courier and officer --}}
-    <script>
-        $(document).ready(function() {
-            console.log('Change event triggered');
-            $("#receivers-table").on('blur',".change-reference",function() {
-                var url = $(this).data('url');
-                var csrf = $(this).data('csrf')
-                var reload = $(this).data('reload');
-                // var awb_id = $(this).data('awb');
-                var receiver_id = $(this).data('receiver');
-                var ref = $(this).val();
-                $.ajax({
-                url: url,
-                type: 'post',
-                data: {
-                    _token:csrf,
-                    receiver_id:receiver_id,
-                    reference:ref
-                },
-                success: function(response) {
-                    if (response.status)
-                    {
-                        toastr.success(response.message);
-                        if(reload != true)
-                            $('.dataTable').DataTable().ajax.reload(null, false);
-                        else
-                            window.location.reload();
-                    }
-                    else
-                        toastr.error(response.message);
-                },
-                error: function(xhr) {
-                    toastr.error(xhr);
-                }
-            });
-            })
-        });
-    </script>
+    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{asset('vendor/datatables/buttons.server-side.js') }}"></script>
+    {!! $dataTable->scripts() !!}
 @endsection
