@@ -5,6 +5,7 @@ use App\Http\Livewire\Dashboard\Switcherpage;
 use App\Http\Controllers\Web\CountryController;
 use App\Http\Controllers\Web\CurrencyController;
 use App\Http\Controllers\Web\DepartmentController;
+use App\Http\Controllers\Web\IndustryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('currencies', CurrencyController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('departments', DepartmentController::class);
+    Route::resource('industries', IndustryController::class);
 });

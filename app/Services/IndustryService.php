@@ -4,14 +4,14 @@ namespace App\Services;
 
 use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
-use App\Models\Department;
+use App\Models\Industry;
 use Illuminate\Database\Eloquent\Builder;
-use App\QueryFilters\DepartmentFilters;
+use App\QueryFilters\IndustryFilters;
 use Illuminate\Database\Eloquent\Model;
 
-class DepartmentService extends BaseService
+class IndustryService extends BaseService
 {
-    public function __construct(private Department $model){
+    public function __construct(private Industry $model){
 
     }
 
@@ -22,8 +22,8 @@ class DepartmentService extends BaseService
 
     public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
-        $department = $this->getModel()->query()->with($withRelations);
-        return (new DepartmentFilters($filters))->apply($department);
+        $industry = $this->getModel()->query()->with($withRelations);
+        return (new IndustryFilters($filters))->apply($industry);
     }
 
     public function getAll(array $filters = [] , array $withRelations =[], $perPage = null ): \Illuminate\Contracts\Pagination\CursorPaginator|\Illuminate\Database\Eloquent\Collection
@@ -34,25 +34,25 @@ class DepartmentService extends BaseService
             return $this->queryGet(filters: $filters,withRelations: $withRelations)->get();
     }
 
-    public function getDepartmentsForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
+    public function getIndustriesForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
     {
         return $this->queryGet(filters: $filters)->select(['id','name'])->get();
     }
 
-    public function store(array $data = []):Department|Model|bool
+    public function store(array $data = []):Industry|Model|bool
     {
         // $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-        $department = $this->getModel()->create($data);
-        if (!$department)
+        $industry = $this->getModel()->create($data);
+        if (!$industry)
             return false ;
-        return $department;
+        return $industry;
     } //end of store
 
     public function update(int $id, array $data=[])
     {
-        $department = $this->findById($id);
+        $industry = $this->findById($id);
         // $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-        return $department->update($data);
+        return $industry->update($data);
     }
 
     /**
@@ -60,15 +60,15 @@ class DepartmentService extends BaseService
      */
     public function destroy($id)
     {
-        $department = $this->findById($id);
-        return $department->delete();
+        $industry = $this->findById($id);
+        return $industry->delete();
     } //end of delete
 
     public function status($id)
     {
-        $department = $this->findById($id);
-        $department->is_active = !$department->is_active;
-        return $department->save();
+        $industry = $this->findById($id);
+        $industry->is_active = !$industry->is_active;
+        return $industry->save();
 
     }//end of status
 
