@@ -2,16 +2,18 @@
 
 namespace App\Services;
 
+use App\Models\Supplier;
+use App\Models\SupplierAddresses;
 use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
-use App\Models\Supplier;
-use Illuminate\Database\Eloquent\Builder;
 use App\QueryFilters\SupplierFilters;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use App\QueryFilters\SupplierAddressFilters;
 
-class SupplierService extends BaseService
+class SupplierAddressesService extends BaseService
 {
-    public function __construct(private Supplier $model){
+    public function __construct(private SupplierAddresses $model){
 
     }
 
@@ -22,8 +24,8 @@ class SupplierService extends BaseService
 
     public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
-        $Supplier = $this->getModel()->query()->with($withRelations);
-        return (new SupplierFilters($filters))->apply($Supplier);
+        $supplierAddresses = $this->getModel()->query()->with($withRelations);
+        return (new SupplierAddressFilters($filters))->apply($supplierAddresses);
     }
 
     public function getAll(array $filters = [] , array $withRelations =[], $perPage = null ): \Illuminate\Contracts\Pagination\CursorPaginator|\Illuminate\Database\Eloquent\Collection
@@ -34,9 +36,9 @@ class SupplierService extends BaseService
             return $this->queryGet(filters: $filters,withRelations: $withRelations)->get();
     }
 
-    public function getSuppliersForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
+    public function getCountriesForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
     {
-        return $this->queryGet(filters: $filters)->select(['id','contact_name'])->get();
+        return $this->queryGet(filters: $filters)->select(['id','name'])->get();
     }
 
     public function store(array $data = []):Supplier|Model|bool

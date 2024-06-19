@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\CurrencyController;
 use App\Http\Controllers\Web\IndustryController;
 use App\Http\Controllers\Web\SupplierController;
 use App\Http\Controllers\Web\DepartmentController;
+use App\Http\Controllers\Web\SupplierAddressesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('industries', IndustryController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('suppliers', SupplierController::class);
+    Route::resource('supplier_addresses', SupplierAddressesController::class);
 });
