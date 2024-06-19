@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\Web\CategoryController;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard\Switcherpage;
 use App\Http\Controllers\Web\CountryController;
+use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\CurrencyController;
-use App\Http\Controllers\Web\DepartmentController;
 use App\Http\Controllers\Web\IndustryController;
+use App\Http\Controllers\Web\SupplierController;
+use App\Http\Controllers\Web\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('departments', DepartmentController::class);
     Route::resource('industries', IndustryController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('suppliers', SupplierController::class);
 });

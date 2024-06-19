@@ -1,13 +1,18 @@
 @extends('layouts.app')
+
 @section('styles')
     <link href="{{asset('assets/plugins/datatable/css/dataTables.bootstrap5.css')}}" rel="stylesheet" />
 @endsection
+
 @section('content')
+
 {{--    breadcrumb --}}
-    @include('layouts.components.breadcrumb',['title' => trans('app.users_page_title'),'first_list_item' => trans('app.users'),'last_list_item' => trans('app.all_users')])
+    @include('layouts.dashboard.components.breadcrumb',['title' => trans('app.suppliers_page_title'),'first_list_item' => trans('app.suppliers'),'last_list_item' => trans('app.all_suppliers')])
 {{--    end breadcrumb --}}
+
+
     <!--start filters section -->
-        @include('layouts.dashboard.users.components._filters')
+        @include('layouts.dashboard.suppliers.components.filters')
     <!--end filterd section -->
     <!--Row-->
     <!-- Row -->
@@ -17,16 +22,14 @@
                 <div class="card-header">
                     <div class="breadcrumb-header justify-content-between">
                         <div class="left-content">
-                            <a class="btn ripple btn-primary" href="{{route('users.create')}}"><i class="fe fe-plus me-2"></i>{{ trans('app.new') }}</a>
-
-                            <a role="button" href="{{route('users-download-template.form')}}" class="btn btn-primary"><i class="fa fa-upload pe-2"></i>@lang('app.import')</a>
-
+                            <a class="btn btn-primary" href="{{ route('suppliers.create') }}"><i
+                                    class="fe fe-plus me-2"></i>@lang('app.new')</a>
+                            <div class="btn-group ms-2 mt-2 mb-2">
+                                <div class="dropdown">
+                                    <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary" data-bs-toggle="dropdown" id="dropdownMenuButton" type="button">@lang('app.actions') <i class="fas fa-caret-down ms-1"></i></button>
+                                </div>
+                            </div>
                         </div>
-{{--                        <div class="justify-content-center">--}}
-{{--                            <button type="button" class="btn btn-secondary">--}}
-{{--                                <i class="fe fe-download me-1"></i> Download User Data--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="card-body">
@@ -38,7 +41,15 @@
         </div>
     </div>
     <!-- End Row -->
+
 @endsection
+
 @section('scripts')
-    @include('layouts.components.datatable-scripts')
+    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{asset('vendor/datatables/buttons.server-side.js') }}"></script>
+    {!! $dataTable->scripts() !!}
 @endsection
