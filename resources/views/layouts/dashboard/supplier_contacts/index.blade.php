@@ -7,15 +7,15 @@
 @section('content')
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.supplier_addresses_page_title'),
-        'first_list_item' => trans('app.supplier_addresses'),
-        'last_list_item' => trans('app.all_supplier_addresses'),
+        'title' => trans('app.supplier_contacts_page_title'),
+        'first_list_item' => trans('app.supplier_contacts'),
+        'last_list_item' => trans('app.all_supplier_contacts'),
     ])
     {{--    end breadcrumb --}}
 
 
     <!--start filters section -->
-    @include('layouts.dashboard.supplier_addresses.components.filters')
+    @include('layouts.dashboard.supplier_contacts.components.filters')
     <!--end filterd section -->
     <!--Row-->
     <!-- Row -->
@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <div class="breadcrumb-header justify-content-between">
                         <div class="left-content">
-                            <a class="btn btn-primary" href="{{ route('supplier_addresses.create') }}"><i
+                            <a class="btn btn-primary" href="{{ route('supplier_contacts.create') }}"><i
                                     class="fe fe-plus me-2"></i>@lang('app.new')</a>
                             <div class="btn-group ms-2 mt-2 mb-2">
                                 <div class="dropdown">
