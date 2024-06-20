@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\SupplierContactController;
 use App\Http\Controllers\Web\SupplierAddressesController;
 use App\Http\Controllers\Web\SupplierProductInvoiceController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceController;
+use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('supplier_addresses', SupplierAddressesController::class);
     Route::resource('supplier_contacts', SupplierContactController::class);
     Route::resource('supplier_service_invoices', SupplierServiceInvoiceController::class);
+    Route::resource('supplier_service_invoice_taxes', SupplierServiceInvoiceTaxController::class);
     Route::resource('supplier_product_invoices', SupplierProductInvoiceController::class);
 });

@@ -3,15 +3,14 @@
 namespace App\Services;
 
 use App\Exceptions\NotFoundException;
-use App\Models\SupplierServiceInvoice;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\SupplierServiceInvoiceTax;
 use Illuminate\Database\Eloquent\Builder;
-use App\QueryFilters\SupplierContactFilters;
-use App\QueryFilters\SupplierServiceInvoiceFilters;
+use App\QueryFilters\SupplierServiceInvoiceTaxFilters;
 
-class SupplierServiceInvoiceService extends BaseService
+class SupplierServiceInvoiceTaxService extends BaseService
 {
-    public function __construct(private SupplierServiceInvoice $model){
+    public function __construct(private SupplierServiceInvoiceTax $model){
 
     }
 
@@ -23,7 +22,7 @@ class SupplierServiceInvoiceService extends BaseService
     public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
         $supplierAddresses = $this->getModel()->query()->with($withRelations);
-        return (new SupplierServiceInvoiceFilters($filters))->apply($supplierAddresses);
+        return (new SupplierServiceInvoiceTaxFilters($filters))->apply($supplierAddresses);
     }
 
     public function getAll(array $filters = [] , array $withRelations =[], $perPage = null ): \Illuminate\Contracts\Pagination\CursorPaginator|\Illuminate\Database\Eloquent\Collection
@@ -34,9 +33,9 @@ class SupplierServiceInvoiceService extends BaseService
             return $this->queryGet(filters: $filters,withRelations: $withRelations)->get();
     }
 
-    public function getSupplierServiceInvoicesForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
+    public function getCountriesForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
     {
-        return $this->queryGet(filters: $filters)->select(['id'])->get();
+        return $this->queryGet(filters: $filters)->select(['id','name'])->get();
     }
 
     public function store(array $data = []):Model|bool
