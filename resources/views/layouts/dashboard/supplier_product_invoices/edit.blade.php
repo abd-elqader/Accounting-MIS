@@ -4,9 +4,9 @@
 
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.supplier_contact_page_title'),
-        'first_list_item' => trans('app.supplier_contact'),
-        'last_list_item' => trans('app.edit_supplier_contact'),
+        'title' => trans('app.supplier_product_invoice_page_title'),
+        'first_list_item' => trans('app.supplier_product_invoice'),
+        'last_list_item' => trans('app.edit_supplier_product_invoice'),
     ])
     {{--    end breadcrumb --}}
 
@@ -22,7 +22,7 @@
             </div>
         @endif
         <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12"> <!--div-->
-            <form action="{{ route('supplier_service_invoices.update', $supplierServiceInvoice->id) }}" method="post">
+            <form action="{{ route('supplier_product_invoices.update', $supplierProductInvoice->id) }}" method="post">
 
                 <div class="card">
                     <div class="card-body">
@@ -31,14 +31,14 @@
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.total_invoice') *</div>
-                                <input class="form-control" name="total_invoice" value="{{ $supplierServiceInvoice->total_invoice}}"
+                                <input class="form-control" name="total_invoice" value="{{ $supplierProductInvoice->total_invoice}}"
                                     placeholder="@lang('app.total_invoice')" type="text">
                                 @error('total_invoice')
                                     <div class="text-danger"> {{ $message }} </div>
                                 @enderror
                             </div>
                             <div class="col-lg">
-                                @livewire('dashboard.supplier', ['selected_supplier' => $supplierServiceInvoice->supplier_id])
+                                @livewire('dashboard.supplier', ['selected_supplier' => $supplierProductInvoice->supplier_id])
                                 @error('supplier_id')
                                     <div class="text-danger"> {{ $message }}</div>
                                 @enderror
@@ -48,7 +48,7 @@
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.reversed')</div>
-                                <input class="form-control" value="{{ $supplierServiceInvoice->reversed }}" name="reversed"
+                                <input class="form-control" value="{{ $supplierProductInvoice->reversed }}" name="reversed"
                                     placeholder="@lang('app.reversed')" type="text">
 
                                 @error('reversed')
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.due_date')</div>
-                                <input class="form-control" value="{{ $supplierServiceInvoice->due_date }}" name="due_date"
+                                <input class="form-control" value="{{ $supplierProductInvoice->due_date }}" name="due_date"
                                     placeholder="@lang('app.due_date')" type="date">
                                 @error('due_date')
                                     <div class="text-danger"> {{ $message }}</div>
@@ -66,7 +66,7 @@
 
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.creation_date')</div>
-                                <input class="form-control" value="{{ $supplierServiceInvoice->creation_date }}" name="creation_date"
+                                <input class="form-control" value="{{ $supplierProductInvoice->creation_date }}" name="creation_date"
                                     placeholder="@lang('app.creation_date')" type="date">
                                 @error('creation_date')
                                     <div class="text-danger"> {{ $message }}</div>

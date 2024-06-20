@@ -1,82 +1,68 @@
 @extends('layouts.app')
 
 @section('content')
-
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.supplier_contact_page_title'),
-        'first_list_item' => trans('app.supplier_contact'),
-        'last_list_item' => trans('app.edit_supplier_contact'),
+        'title' => trans('app.supplier_product_invoices_page_title'),
+        'first_list_item' => trans('app.supplier_product_invoice'),
+        'last_list_item' => trans('app.add_supplier_product_invoice'),
     ])
     {{--    end breadcrumb --}}
 
     <!-- Row -->
     <div class="row">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12"> <!--div-->
-            <form action="{{ route('supplier_service_invoices.update', $supplierServiceInvoice->id) }}" method="post">
-
+            <form action="{{ route('supplier_product_invoices.store') }}" method="post">
                 <div class="card">
                     <div class="card-body">
                         @csrf
-                        @method('put')
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.total_invoice') *</div>
-                                <input class="form-control" name="total_invoice" value="{{ $supplierServiceInvoice->total_invoice}}"
+                                <input class="form-control" name="total_invoice" value="{{ old('total_invoice') }}"
                                     placeholder="@lang('app.total_invoice')" type="text">
                                 @error('total_invoice')
                                     <div class="text-danger"> {{ $message }} </div>
                                 @enderror
                             </div>
                             <div class="col-lg">
-                                @livewire('dashboard.supplier', ['selected_supplier' => $supplierServiceInvoice->supplier_id])
+                                @livewire('dashboard.supplier')
                                 @error('supplier_id')
                                     <div class="text-danger"> {{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.reversed')</div>
-                                <input class="form-control" value="{{ $supplierServiceInvoice->reversed }}" name="reversed"
+                                <input class="form-control" value="{{ old('reversed') }}" name="reversed"
                                     placeholder="@lang('app.reversed')" type="text">
 
                                 @error('reversed')
                                     <div class="text-danger"> {{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.due_date')</div>
-                                <input class="form-control" value="{{ $supplierServiceInvoice->due_date }}" name="due_date"
+                                <input class="form-control" value="{{ old('due_date') }}" name="due_date"
                                     placeholder="@lang('app.due_date')" type="date">
+
                                 @error('due_date')
                                     <div class="text-danger"> {{ $message }}</div>
                                 @enderror
                             </div>
-
                             <div class="col-lg">
                                 <div class="main-content-label mg-b-5">@lang('app.creation_date')</div>
-                                <input class="form-control" value="{{ $supplierServiceInvoice->creation_date }}" name="creation_date"
+                                <input class="form-control" value="{{ old('creation_date') }}" name="creation_date"
                                     placeholder="@lang('app.creation_date')" type="date">
+
                                 @error('creation_date')
                                     <div class="text-danger"> {{ $message }}</div>
                                 @enderror
                             </div>
-
                         </div>
-
                     </div>
-
                     <div class="card-footer mt-4">
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
@@ -94,5 +80,4 @@
     </div>
 
     <!-- End Row -->
-
 @endsection
