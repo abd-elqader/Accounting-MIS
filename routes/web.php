@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\IndustryController;
 use App\Http\Controllers\Web\SupplierController;
 use App\Http\Controllers\Web\DepartmentController;
 use App\Http\Controllers\Web\ProductController;
+use App\Http\Controllers\Web\ServiceController;
 use App\Http\Controllers\Web\SupplierContactController;
 use App\Http\Controllers\Web\SupplierAddressesController;
 use App\Http\Controllers\Web\SupplierProductInvoiceController;
@@ -48,6 +49,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('industries', IndustryController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('services', ServiceController::class);
     Route::resource('suppliers', SupplierController::class);
     Route::resource('supplier_addresses', SupplierAddressesController::class);
     Route::resource('supplier_contacts', SupplierContactController::class);

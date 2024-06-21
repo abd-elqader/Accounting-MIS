@@ -3,16 +3,16 @@
 @section('content')
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.products_page_title'),
-        'first_list_item' => trans('app.countries'),
-        'last_list_item' => trans('app.add_country'),
+        'title' => trans('app.services_page_title'),
+        'first_list_item' => trans('app.services'),
+        'last_list_item' => trans('app.add_service'),
     ])
     {{--    end breadcrumb --}}
 
     <!-- Row -->
     <div class="row">
         <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12"> <!--div-->
-            <form id="product_form" action="{{ route('products.store') }}" method="post">
+            <form id="service_form" action="{{ route('services.store') }}" method="post">
                 <div class="card">
                     <div class="card-body">
                         @if ($errors->any())
@@ -94,20 +94,6 @@
                                     <div class="text-danger"> {{ $message }} </div>
                                 @enderror
                             </div>
-                            <div class="col-lg">
-                                @livewire('dashboard.category')
-                                @error('category_id')
-                                    <div class="text-danger"> {{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row row-sm mb-4">
-                            <div class="col-lg-12">
-                                @livewire('dashboard.department')
-                                @error('department_id')
-                                    <div class="text-danger"> {{ $message }}</div>
-                                @enderror
-                            </div>
                         </div>
                         <div class="row row-sm mb-4">
                             <div class="col-lg-12">
@@ -126,20 +112,20 @@
                         </div>
                         <hr>
                         <div class="row row-sm mb-4">
-                            {{-- start the product unit prices --}}
-                            <div class="mb-3  product-unit-prices">
+                            {{-- start the service unit prices --}}
+                            <div class="mb-3  service-unit-prices">
                                 <div class="mb-3">
-                                    <button id="add-product-unit-price" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.add_unit_price')}}</button>
+                                    <button id="add-service-unit-price" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.add_unit_price')}}</button>
                                 </div>
                             </div>
-                            {{-- end the product unit prices --}}
+                            {{-- end the service unit prices --}}
                         </div>
 
                     </div>
                     <div class="card-footer">
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
-                                <button id="product_submit_button" type="submit" class="btn btn-primary"><i
+                                <button id="service_submit_button" type="submit" class="btn btn-primary"><i
                                         class="fa fa-save pe-2"></i>@lang('app.submit')</button>
 
                                 <a role="button" href="{{ URL::previous() }}" class="btn btn-primary"><i
@@ -188,18 +174,18 @@
 @section('script')
 <script>
     $(document).ready(function(){
-        $('#add-product-unit-price').click(function(){
+        $('#add-service-unit-price').click(function(){
             var element = $('#unit_price').html();
-            $('.product-unit-prices').append(element);
+            $('.service-unit-prices').append(element);
         });
-        $('.product-unit-prices').on('click', '.remove-unit-price', function(){
+        $('.service-unit-prices').on('click', '.remove-unit-price', function(){
             var element = $(this).parents('.unit-price')
             element.remove();
         });
-        $('#product_submit_button').click(function(e){
+        $('#service_submit_button').click(function(e){
             e.preventDefault();
-            var url = $('#product_form').attr("action");
-            var data = $('#product_form').serialize();
+            var url = $('#service_form').attr("action");
+            var data = $('#service_form').serialize();
             $.ajax({
                 url:url,
                 method:"post",
@@ -211,7 +197,7 @@
                     $(".load_content").hide();
                     $(".alert_message").text('{{ __("lang.success_operation") }}');
                     $(".alert_message").fadeIn().delay(2000).fadeOut();
-                    $(location).attr('href', "{{ route('products.index') }}");
+                    $(location).attr('href', "{{ route('services.index') }}");
                 },
                 error: function(data_error, exception){
                     $(".load_content").hide();
