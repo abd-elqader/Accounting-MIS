@@ -4,8 +4,8 @@
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
         'title' => trans('app.supplierAddresses_page_title'),
-        'first_list_item' => trans('app.supplierAddresses'),
-        'last_list_item' => trans('app.add_supplier'),
+        'first_list_item' => trans('app.supplier_addresses'),
+        'last_list_item' => trans('app.add_supplier_addresses'),
     ])
     {{--    end breadcrumb --}}
 

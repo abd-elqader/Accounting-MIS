@@ -28,6 +28,9 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('layouts.index');
+// })->name('home');
 
 Route::group(['prefix' => 'authentication', 'middleware' => 'guest'], function () {
     Route::view('login', 'layouts.dashboard.auth.login')->name('login');
@@ -35,10 +38,10 @@ Route::group(['prefix' => 'authentication', 'middleware' => 'guest'], function (
     // Route::post('login', [AuthController::class, 'login'])->name('signin');
 });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::get('/', function () {
-        return view('layouts.index');
-    })->name('home');
+        return view('livewire.index');
+    });
     Route::resource('currencies', CurrencyController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('departments', DepartmentController::class);
@@ -52,4 +55,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('supplier_service_invoice_taxes', SupplierServiceInvoiceTaxController::class);
     Route::resource('supplier_product_invoices', SupplierProductInvoiceController::class);
     Route::resource('supplier_product_invoice_taxes', SupplierProductInvoiceTaxController::class);
+});
+
+
+
+Route::fallback(function () {
+    return view('layouts.dashboard.error-pages.error404');
 });

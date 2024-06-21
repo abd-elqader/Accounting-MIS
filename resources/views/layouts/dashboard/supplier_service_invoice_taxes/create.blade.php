@@ -4,8 +4,8 @@
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
         'title' => trans('app.supplier_service_invoice_taxes_page_title'),
-        'first_list_item' => trans('app.supplier_service_invoice_taxe'),
-        'last_list_item' => trans('app.add_supplier_service_invoice_taxe'),
+        'first_list_item' => trans('app.supplier_service_invoice_tax'),
+        'last_list_item' => trans('app.add_supplier_service_invoice_tax'),
     ])
     {{--    end breadcrumb --}}
 
