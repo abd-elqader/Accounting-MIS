@@ -132,7 +132,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/statistic', function () {
     return view('livewire.index');
 });
 Route::get('aboutus', Aboutus::class);

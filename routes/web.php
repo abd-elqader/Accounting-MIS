@@ -27,11 +27,18 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('layouts.index');
-})->name('home');
 
-Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
+
+Route::group(['prefix' => 'authentication', 'middleware' => 'guest'], function () {
+    Route::view('login', 'layouts.dashboard.auth.login')->name('login');
+    // Route::get('login', [AuthController::class, 'loginForm'])->name('login');
+    // Route::post('login', [AuthController::class, 'login'])->name('signin');
+});
+
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('layouts.index');
+    })->name('home');
     Route::resource('currencies', CurrencyController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('departments', DepartmentController::class);
