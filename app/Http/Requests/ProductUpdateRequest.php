@@ -35,6 +35,12 @@ class ProductUpdateRequest extends FormRequest
             'yearly_income' => 'required|numeric',
             'category_id' => 'required|integer|exists:categories,id',
             'department_id' => 'required|integer|exists:departments,id',
+
+            'unit_prices_price'=>'nullable|array',
+            'unit_prices_price.*'=>'required|numeric',
+            'unit_prices_currency_id'=>'nullable|array',
+            'unit_prices_currency_id.*'=>'required|integer|exists:currencies,id',
+
         ];
     }
 

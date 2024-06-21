@@ -24,4 +24,11 @@ class Product extends Model
         'category_id',
         'department_id',
     ];
+
+    public function unitPrices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ProductUnitPrice::class,  'product_id');
+    }
+
+
 }
