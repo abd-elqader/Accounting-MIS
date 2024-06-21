@@ -7,7 +7,7 @@
 @section('content')
 
 {{--    breadcrumb --}}
-    @include('layouts.dashboard.components.breadcrumb',['title' => trans('app.countries_page_title'),'first_list_item' => trans('app.countries'),'last_list_item' => trans('app.all_countries')])
+    @include('layouts.dashboard.components.breadcrumb',['title' => trans('app.services_page_title'),'first_list_item' => trans('app.services'),'last_list_item' => trans('app.all_services')])
 {{--    end breadcrumb --}}
 
 
@@ -22,7 +22,7 @@
                 <div class="card-header">
                     <div class="breadcrumb-header justify-content-between">
                         <div class="left-content">
-                            <a class="btn btn-primary" href="{{ route('products.create') }}"><i
+                            <a class="btn btn-primary" href="{{ route('services.create') }}"><i
                                     class="fe fe-plus me-2"></i>@lang('app.create')</a>
                         </div>
                     </div>

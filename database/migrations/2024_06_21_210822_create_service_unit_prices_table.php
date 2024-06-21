@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('service_unit_prices', function (Blueprint $table) {
             $table->id();
             $table->float('price');
-            $table->foreignIdFor(\App\Models\Product::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Service::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignIdFor(\App\Models\Currency::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
