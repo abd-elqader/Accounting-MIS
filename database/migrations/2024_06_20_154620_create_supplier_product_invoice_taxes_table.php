@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('supplier_product_invoice_taxes', function (Blueprint $table) {
+        Schema::create('supplier_service_invoice_taxes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('value');
             $table->string('type');
-            $table->foreignId('SPI_id')->constrained('supplier_product_invoices')->onDelete('cascade');
+            $table->foreignId('SSI_id')->constrained('supplier_service_invoices')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('supplier_product_invoice_taxes');
+        Schema::dropIfExists('supplier_service_invoice_taxes');
     }
 };

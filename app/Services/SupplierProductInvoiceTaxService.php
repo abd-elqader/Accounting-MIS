@@ -3,17 +3,16 @@
 namespace App\Services;
 
 use App\Exceptions\NotFoundException;
-use App\Models\SupplierProductInvoice;
-use App\Models\SupplierServiceInvoice;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\SupplierProductInvoiceTax;
+use App\Models\SupplierServiceInvoiceTax;
 use Illuminate\Database\Eloquent\Builder;
-use App\QueryFilters\SupplierContactFilters;
-use App\QueryFilters\SupplierProductInvoiceFilters;
-use App\QueryFilters\SupplierServiceInvoiceFilters;
+use App\QueryFilters\SupplierProductInvoiceTaxFilters;
+use App\QueryFilters\SupplierServiceInvoiceTaxFilters;
 
-class SupplierProductInvoiceService extends BaseService
+class SupplierProductInvoiceTaxService extends BaseService
 {
-    public function __construct(private SupplierProductInvoice $model){
+    public function __construct(private SupplierProductInvoiceTax $model){
 
     }
 
@@ -25,7 +24,7 @@ class SupplierProductInvoiceService extends BaseService
     public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
         $supplierAddresses = $this->getModel()->query()->with($withRelations);
-        return (new SupplierProductInvoiceFilters($filters))->apply($supplierAddresses);
+        return (new SupplierProductInvoiceTaxFilters($filters))->apply($supplierAddresses);
     }
 
     public function getAll(array $filters = [] , array $withRelations =[], $perPage = null ): \Illuminate\Contracts\Pagination\CursorPaginator|\Illuminate\Database\Eloquent\Collection
@@ -36,9 +35,9 @@ class SupplierProductInvoiceService extends BaseService
             return $this->queryGet(filters: $filters,withRelations: $withRelations)->get();
     }
 
-    public function getSupplierProductInvoicesForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
+    public function getCountriesForSelectDropDown(array $filters = []): \Illuminate\Database\Eloquent\Collection|array
     {
-        return $this->queryGet(filters: $filters)->select(['id'])->get();
+        return $this->queryGet(filters: $filters)->select(['id','name'])->get();
     }
 
     public function store(array $data = []):Model|bool
