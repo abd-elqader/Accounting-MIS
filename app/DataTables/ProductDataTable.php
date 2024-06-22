@@ -67,22 +67,22 @@ class ProductDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('name')->title(__('lang.name')),
-            Column::make('brand')->title(__('lang.brand')),
-            Column::make('tax')->title(__('lang.tax')),
-            Column::make('taxable')->title(__('lang.taxable')),
-            Column::make('description')->title(__('lang.description')),
-            Column::make('stock')->title(__('lang.stock')),
-            // Column::make('type')->title(__('lang.type')),
-            Column::make('daily_income')->title(__('lang.daily_income')),
-            Column::make('weekly_income')->title(__('lang.weekly_income')),
-            Column::make('monthly_income')->title(__('lang.monthly_income')),
-            Column::make('yearly_income')->title(__('lang.yearly_income')),
-            Column::make('category_id')->title(__('lang.category')),
-            Column::make('department_id')->title(__('lang.department')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('name')->title(__('app.name')),
+            Column::make('brand')->title(__('app.brand')),
+            Column::make('tax')->title(__('app.tax')),
+            Column::make('taxable')->title(__('app.taxable')),
+            Column::make('description')->title(__('app.description')),
+            Column::make('stock')->title(__('app.stock')),
+            // Column::make('type')->title(__('app.type')),
+            Column::make('daily_income')->title(__('app.daily_income')),
+            Column::make('weekly_income')->title(__('app.weekly_income')),
+            Column::make('monthly_income')->title(__('app.monthly_income')),
+            Column::make('yearly_income')->title(__('app.yearly_income')),
+            Column::make('category_id')->title(__('app.category')),
+            Column::make('department_id')->title(__('app.department')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

@@ -63,13 +63,13 @@ class SupplierAddressesDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('type')->title(__('lang.type')),
-            Column::make('postal_code')->title(__('lang.postal_code')),
-            Column::make('description')->title(__('lang.description')),
-            Column::make('supplier_id')->title(__('lang.supplier_id')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('type')->title(__('app.type')),
+            Column::make('postal_code')->title(__('app.postal_code')),
+            Column::make('description')->title(__('app.description')),
+            Column::make('supplier_id')->title(__('app.supplier_id')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

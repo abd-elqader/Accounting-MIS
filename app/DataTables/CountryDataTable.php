@@ -67,13 +67,13 @@ class CountryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('name')->title(__('lang.name')),
-            Column::make('code')->title(__('lang.code')),
-            Column::make('slug')->title(__('lang.slug')),
-            Column::make('currency_id')->title(__('lang.currency')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('name')->title(__('app.name')),
+            Column::make('code')->title(__('app.code')),
+            Column::make('slug')->title(__('app.slug')),
+            Column::make('currency_id')->title(__('app.currency')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

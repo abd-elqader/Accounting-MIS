@@ -67,10 +67,10 @@ class IndustryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('name')->title(__('lang.name')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('name')->title(__('app.name')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

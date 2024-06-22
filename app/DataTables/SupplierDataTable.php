@@ -67,19 +67,19 @@ class SupplierDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('contact_name')->title(__('lang.contact_name')),
-            Column::make('iban')->title(__('lang.iban')),
-            Column::make('commercial_register')->title(__('lang.commercial_register')),
-            Column::make('tax_number')->title(__('lang.tax_number')),
-            Column::make('taxable')->title(__('lang.taxable')),
-            Column::make('company_name')->title(__('lang.company_name')),
-            Column::make('monthly_expenses')->title(__('lang.monthly_expenses')),
-            Column::make('monthly_income')->title(__('lang.iban')),
-            Column::make('industry_id')->title(__('lang.industry_id')),
-            Column::make('country_id')->title(__('lang.country_id')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('contact_name')->title(__('app.contact_name')),
+            Column::make('iban')->title(__('app.iban')),
+            Column::make('commercial_register')->title(__('app.commercial_register')),
+            Column::make('tax_number')->title(__('app.tax_number')),
+            Column::make('taxable')->title(__('app.taxable')),
+            Column::make('company_name')->title(__('app.company_name')),
+            Column::make('monthly_expenses')->title(__('app.monthly_expenses')),
+            Column::make('monthly_income')->title(__('app.iban')),
+            Column::make('industry_id')->title(__('app.industry_id')),
+            Column::make('country_id')->title(__('app.country_id')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

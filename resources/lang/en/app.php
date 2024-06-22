@@ -9,7 +9,13 @@ return [
     'back' => 'Back',
     'new' => 'New',
     'action' => 'Action',
+    'actions' => 'Actions',
     'filter' => 'Filter',
+    'show' => 'Show',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'id' => 'ID',   
+    
 
 
     // login
@@ -58,6 +64,15 @@ return [
     'supplier_product_invoice_taxes_page_title' => 'Supplier Product Invoice Taxes',
     'supplier_product_invoice_tax' => 'Supplier Product Invoice Tax',
     'add_supplier_product_invoice_tax' => 'Add Supplier Product Invoice Tax',
+
+    // Supplier Product Invoices item
+    'supplier_product_invoice_items_page_title' => 'Supplier Product Invoice items',
+    'supplier_product_invoice_item' => 'Supplier Product Invoice item',
+    'add_supplier_product_invoice_item' => 'Add Supplier Product Invoice item',
+    'count' => 'Count',
+    'products' => 'Products',
+    'total_items_cost' => 'Total items cost',
+    'price' => 'Price',
     
 
     // Supplier Contacts

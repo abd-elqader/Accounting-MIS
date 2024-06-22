@@ -62,13 +62,13 @@ class SupplierServiceInvoiceTaxDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('name')->title(__('lang.name')),
-            Column::make('value')->title(__('lang.value')),
-            Column::make('type')->title(__('lang.type')),
-            Column::make('SSI_id')->title(__('lang.supplier_service_invoice_id')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('name')->title(__('app.name')),
+            Column::make('value')->title(__('app.value')),
+            Column::make('type')->title(__('app.type')),
+            Column::make('SSI_id')->title(__('app.supplier_service_invoice_id')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

@@ -67,11 +67,11 @@ class CurrencyDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('name')->title(__('lang.name')),
-            Column::make('is_active')->title(__('lang.is_active')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('name')->title(__('app.name')),
+            Column::make('is_active')->title(__('app.is_active')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

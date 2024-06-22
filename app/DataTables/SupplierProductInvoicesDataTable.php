@@ -63,14 +63,14 @@ class SupplierProductInvoicesDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('total_invoice')->title(__('lang.total_invoice')),
-            Column::make('reversed')->title(__('lang.reversed')),
-            Column::make('due_date')->title(__('lang.due_date')),
-            Column::make('creation_date')->title(__('lang.creation_date')),
-            Column::make('supplier_id')->title(__('lang.supplier_id')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('total_invoice')->title(__('app.total_invoice')),
+            Column::make('reversed')->title(__('app.reversed')),
+            Column::make('due_date')->title(__('app.due_date')),
+            Column::make('creation_date')->title(__('app.creation_date')),
+            Column::make('supplier_id')->title(__('app.supplier_id')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

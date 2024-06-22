@@ -4,19 +4,20 @@ use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard\Switcherpage;
 use App\Http\Controllers\Web\CountryController;
+use App\Http\Controllers\Web\ProductController;
+use App\Http\Controllers\Web\ServiceController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\CurrencyController;
 use App\Http\Controllers\Web\IndustryController;
 use App\Http\Controllers\Web\SupplierController;
 use App\Http\Controllers\Web\DepartmentController;
-use App\Http\Controllers\Web\ProductController;
-use App\Http\Controllers\Web\ServiceController;
 use App\Http\Controllers\Web\SupplierContactController;
 use App\Http\Controllers\Web\SupplierAddressesController;
 use App\Http\Controllers\Web\SupplierProductInvoiceController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceController;
 use App\Http\Controllers\Web\SupplierProductInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
+use App\Http\Controllers\Web\SupplierProductInvoiceItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('supplier_service_invoice_taxes', SupplierServiceInvoiceTaxController::class);
     Route::resource('supplier_product_invoices', SupplierProductInvoiceController::class);
     Route::resource('supplier_product_invoice_taxes', SupplierProductInvoiceTaxController::class);
+    Route::resource('supplier_product_invoice_items', SupplierProductInvoiceItemController::class);
 });
 
 

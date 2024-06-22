@@ -2,20 +2,19 @@
 
 namespace App\DataTables;
 
-use App\Models\Service;
-use App\Models\Site;
-use App\Services\ServiceService;
-use App\Services\SiteService;
-use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Yajra\DataTables\EloquentDataTable;
-use Yajra\DataTables\Html\Builder as HtmlBuilder;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
+use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
+use App\Models\SupplierProductInvoiceTax;
+use App\Models\SupplierServiceInvoiceTax;
+use App\Models\SupplierProductInvoiceItem;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
+use App\Services\SupplierProductInvoiceTaxService;
+use App\Services\SupplierServiceInvoiceTaxService;
+use App\Services\SupplierProductInvoiceItemService;
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
-class ServiceDataTable extends DataTable
+class SupplierProductInvoiceItemDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -25,8 +24,8 @@ class ServiceDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function(Service $model){
-            return view('layouts.dashboard.services.components.actions',compact('model'))->render();
+        ->addColumn('action', function(SupplierProductInvoiceItem $model){
+            return view('layouts.dashboard.supplier_product_invoice_items.components.actions',compact('model'))->render();
         })
             ->setRowId('id');
     }
@@ -34,9 +33,9 @@ class ServiceDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(ServiceService $service): QueryBuilder
+    public function query(SupplierProductInvoiceItemService $supplierProductInvoiceItemService): QueryBuilder
     {
-        return $service->queryGet(filters: $this->filters);
+        return $supplierProductInvoiceItemService->queryGet(filters: $this->filters);
     }
 
     /**
@@ -45,7 +44,7 @@ class ServiceDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('services-table')
+                    ->setTableId('suppliers-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -68,17 +67,11 @@ class ServiceDataTable extends DataTable
     {
         return [
             Column::make('id')->title(__('app.id')),
-            Column::make('name')->title(__('app.name')),
-            Column::make('brand')->title(__('app.brand')),
-            Column::make('tax')->title(__('app.tax')),
-            Column::make('taxable')->title(__('app.taxable')),
-            Column::make('description')->title(__('app.description')),
-            Column::make('stock')->title(__('app.stock')),
-            // Column::make('type')->title(__('app.type')),
-            Column::make('daily_income')->title(__('app.daily_income')),
-            Column::make('weekly_income')->title(__('app.weekly_income')),
-            Column::make('monthly_income')->title(__('app.monthly_income')),
-            Column::make('yearly_income')->title(__('app.yearly_income')),
+            Column::make('count')->title(__('app.count')),
+            Column::make('price')->title(__('app.price')),
+            Column::make('total_items_cost')->title(__('app.total_items_cost')),
+            Column::make('SPI_id')->title(__('app.supplier_product_invoice_id')),
+            Column::make('product_id')->title(__('app.product_id')),
             Column::computed('action')
                 ->title(__('app.actions'))
                 ->exportable(false)
@@ -93,6 +86,6 @@ class ServiceDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Services_' . date('YmdHis');
+        return 'Suppliers_' . date('YmdHis');
     }
 }
