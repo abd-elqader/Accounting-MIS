@@ -69,12 +69,20 @@ return [
     'supplier_product_invoice_items_page_title' => 'Supplier Product Invoice items',
     'supplier_product_invoice_item' => 'Supplier Product Invoice item',
     'add_supplier_product_invoice_item' => 'Add Supplier Product Invoice item',
+    'all_supplier_product_invoice_items' => 'All Supplier Product Invoice items',
+    'edit_supplier_product_invoice_item' => 'Edit Supplier Product Invoice item',
     'count' => 'Count',
     'products' => 'Products',
     'total_items_cost' => 'Total items cost',
     'price' => 'Price',
-    
 
+    
+    // Supplier Service Invoices item
+    'supplier_service_invoice_items_page_title' => 'Supplier Service Invoice items',
+    'supplier_service_invoice_item' => 'Supplier Service Invoice item',
+    'add_supplier_service_invoice_item' => 'Add Supplier Service Invoice item',
+    'all_supplier_service_invoice_items' => 'All Supplier Service Invoice items',
+    'edit_supplier_service_invoice_item' => 'Edit Supplier Service Invoice item',
     // Supplier Contacts
     'supplier_contact_page_title' => 'Supplier Contacts',
     'supplier_contact' => 'Supplier Contact',

@@ -18,6 +18,7 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceController;
 use App\Http\Controllers\Web\SupplierProductInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierProductInvoiceItemController;
+use App\Http\Controllers\Web\SupplierServiceInvoiceItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('supplier_contacts', SupplierContactController::class);
     Route::resource('supplier_service_invoices', SupplierServiceInvoiceController::class);
     Route::resource('supplier_service_invoice_taxes', SupplierServiceInvoiceTaxController::class);
+    Route::resource('supplier_service_invoice_items', SupplierServiceInvoiceItemController::class);
     Route::resource('supplier_product_invoices', SupplierProductInvoiceController::class);
     Route::resource('supplier_product_invoice_taxes', SupplierProductInvoiceTaxController::class);
     Route::resource('supplier_product_invoice_items', SupplierProductInvoiceItemController::class);
