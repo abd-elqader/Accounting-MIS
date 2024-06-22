@@ -3,7 +3,7 @@
 @section('content')
 
     {{--    breadcrumb --}}
-    @include('layouts.components.breadcrumb',['title' => trans('app.receivers_page_title'),'first_list_item' => trans('app.receivers'),'last_list_item' => trans('app.show_receiver')])
+    @include('layouts.dashboard.components.breadcrumb',['title' => trans('app.countries_page_title'),'first_list_item' => trans('app.countries'),'last_list_item' => trans('app.show_supplier')])
     {{--    end breadcrumb --}}
 
     <!-- Row -->
@@ -13,102 +13,63 @@
                 <div class="card-body">
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.receiver_name')</div>
-                                <label class="form-control">{{$receiver->name}}</label>
-                            </div>
-
-                            <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.phone1')</div>
-                                <label class="form-control">{{$receiver->phone1}}</label>
-                            </div>
-
-                            <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.phone2')</div>
-                                <label class="form-control">{{$receiver->phone2}}</label>
+                                <div class="main-content-label mg-b-5">@lang('app.contact_name')</div>
+                                <label class="form-control">{{$supplier->contact_name}}</label>
                             </div>
                         </div>
 
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.receiving_company')</div>
-                                <label class="form-control">{{$receiver->receiving_company}}</label>
+                                <div class="main-content-label mg-b-5">@lang('app.industry_id')</div>
+                                <label class="form-control">{{$supplier->industry_id}}</label>
                             </div>
 
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.receiving_branch')</div>
-                                <label class="form-control">{{$receiver->receiving_branch}}</label>
-                            </div>
-
-                            <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.reference')</div>
-                                <label class="form-control">{{$receiver->reference}}</label>
+                                <div class="main-content-label mg-b-5">@lang('app.country_id')</div>
+                                <label class="form-control">{{$supplier->country_id}}</label>
                             </div>
                         </div>
-
-
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.title')</div>
-                                <label class="form-control">{{$receiver->title}}</label>
-                            </div>
-                            <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.company')</div>
-                                <label class="form-control">{{$receiver->company->name}}</label>
+                                <div class="main-content-label mg-b-5">@lang('app.iban')</div>
+                                <label class="form-control">{{$supplier->iban}}</label>
                             </div>
 
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.branch')</div>
-                                <label class="form-control">{{$receiver->branch->name}}</label>
+                                <div class="main-content-label mg-b-5">@lang('app.commercial_register')</div>
+                                <label class="form-control">{{$supplier->commercial_register}}</label>
                             </div>
                         </div>
+                        <div class="row row-sm mb-4">
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.company_name')</div>
+                                <label class="form-control">{{$supplier->company_name}}</label>
+                            </div>
 
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.monthly_expenses')</div>
+                                <label class="form-control">{{$supplier->monthly_expenses}}</label>
+                            </div>
+                        </div>
+                        <div class="row row-sm mb-4">
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.monthly_income')</div>
+                                <label class="form-control">{{$supplier->monthly_income}}</label>
+                            </div>
+
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.tax_number')</div>
+                                <label class="form-control">{{$supplier->tax_number}}</label>
+                            </div>
+                        </div>
+                        <div class="row row-sm mb-4">
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.taxable')</div>
+                                <label class="form-control">{{$supplier->taxable}}</label>
+                            </div>
+                        </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header pb-2"><h5 class="card-title mb-0 pb-0">Address Info</h5></div>
-                <div class="card-body text-success">
-                    <div class="row row-sm mb-4">
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.address1')</div>
-                            <label class="form-control">{{$receiver->address1}}</label>
-                        </div>
 
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.address2')</div>
-                            <label class="form-control">{{$receiver->address2}}</label>
-                        </div>
-
-
-                    </div>
-
-                    <div class="row row-sm mb-4">
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.lat')</div>
-                            <label class="form-control">{{$receiver->lat}}</label>
-                        </div>
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.lng')</div>
-                            <label class="form-control">{{$receiver->lng}}</label>
-                        </div>
-
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.map_url')</div>
-                            <label class="form-control">{{$receiver->map_url}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row row-sm mb-4">
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.city')</div>
-                            <label class="form-control">{{$receiver->city->title}}</label>
-                        </div>
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.area')</div>
-                            <label class="form-control">{{$receiver->area->title}}</label>
-                        </div>
-
-                    </div>
-                </div>
                 <div class="card-footer mt-4">
                     <div class="form-group mb-0 mt-3 justify-content-end">
                         <div>
@@ -118,6 +79,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

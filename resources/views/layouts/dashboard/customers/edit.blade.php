@@ -3,7 +3,7 @@
 @section('content')
 
     {{--    breadcrumb --}}
-    @include('layouts.components.breadcrumb',['title' => trans('app.receivers_page_title'),'first_list_item' => trans('app.receivers'),'last_list_item' => trans('app.edit_receiver')])
+    @include('layouts.dashboard.components.breadcrumb',['title' => trans('app.suppliers_page_title'),'first_list_item' => trans('app.suppliers'),'last_list_item' => trans('app.edit_country')])
     {{--    end breadcrumb --}}
 
     <!-- Row -->
@@ -18,7 +18,7 @@
             </div>
         @endif
         <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12"> <!--div-->
-        <form action="{{route('receivers.update', $receiver->id)}}" method="post">
+        <form action="{{route('suppliers.update', $supplier->id)}}" method="post">
 
             <div class="card">
                 <div class="card-body">
@@ -26,165 +26,90 @@
                         @method('put')
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.receiver_name') *</div>
-                                <input class="form-control" name="name" value="{{$receiver->name}}" placeholder="@lang('app.receiver_name')"
+                                <div class="main-content-label mg-b-5">@lang('app.contact_name') *</div>
+                                <input class="form-control" name="contact_name" value="{{$supplier->contact_name}}" placeholder="@lang('app.supplier_name')"
                                        type="text">
-                                @error('name')
+                                @error('contact_name')
                                     <div class="text-danger"> {{$message}} </div>
                                 @enderror
                             </div>
-
-                            <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.phone1') *</div>
-                                <input class="form-control" value="{{$receiver->phone1}}" name="phone1" placeholder="@lang('app.receiver_phone')"
-                                       type="text">
-                                @error('phone1')
-                                    <div class="text-danger"> {{$message}}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.phone2')</div>
-                                <input class="form-control" value="{{$receiver->phone2}}" name="phone2" placeholder="@lang('app.receiver_phone')"
-                                       type="text">
-                                @error('phone2')
-                                <div class="text-danger"> {{$message}}</div>
-                                @enderror
-                            </div>
                         </div>
 
                         <div class="row row-sm mb-4">
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.receiving_company')</div>
-                                <input class="form-control" value="{{$receiver->receiving_company}}" name="receiving_company"
-                                       placeholder="@lang('app.receiving_company')" type="text">
+                                <div class="main-content-label mg-b-5">@lang('app.iban')</div>
+                                <input class="form-control" value="{{$supplier->iban}}" name="iban"
+                                       placeholder="@lang('app.iban')" type="text">
 
-                                @error('receiving_company')
+                                @error('iban')
                                 <div class="text-danger"> {{$message}}</div>
                                 @enderror
                             </div>
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.receiving_branch')</div>
-                                <input class="form-control" value="{{$receiver->receiving_branch}}" name="receiving_branch"
-                                       placeholder="@lang('app.receiving_branch')" type="text">
-
-                                @error('receiving_branch')
+                                <div class="main-content-label mg-b-5">@lang('app.commercial_register')</div>
+                                <input class="form-control" value="{{$supplier->commercial_register}}" name="commercial_register"
+                                       placeholder="@lang('app.commercial_register')" type="text">
+                                @error('commercial_register')
                                 <div class="text-danger"> {{$message}}</div>
                                 @enderror
-                            </div>
-
-                            <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.reference')</div>
-                                <input class="form-control" value="{{$receiver->reference}}" name="reference" placeholder="@lang('app.reference')"
-                                       type="text">
-
-                                @error('reference')
-                                <div class="text-danger"> {{$message}}</div>
-                                @enderror
-                            </div>
+                            </div>  
 
                         </div>
-
                         <div class="row row-sm mb-4">
-
                             <div class="col-lg">
-                                <div class="main-content-label mg-b-5">@lang('app.title')</div>
-                                <input class="form-control" value="{{$receiver->title}}" name="title" placeholder="@lang('app.title')"
-                                       type="text">
+                                <div class="main-content-label mg-b-5">@lang('app.company_name')</div>
+                                <input class="form-control" value="{{$supplier->company_name}}" name="company_name"
+                                       placeholder="@lang('app.company_name')" type="text">
 
-                                @error('title')
+                                @error('company_name')
+                                <div class="text-danger"> {{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.monthly_expenses')</div>
+                                <input class="form-control" value="{{$supplier->monthly_expenses}}" name="monthly_expenses"
+                                       placeholder="@lang('app.monthly_expenses')" type="text">
+                                @error('monthly_expenses')
+                                <div class="text-danger"> {{$message}}</div>
+                                @enderror
+                            </div>  
+
+                        </div>
+                        <div class="row row-sm mb-4">
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.monthly_income')</div>
+                                <input class="form-control" value="{{$supplier->monthly_income}}" name="monthly_income"
+                                       placeholder="@lang('app.monthly_income')" type="text">
+
+                                @error('monthly_income')
+                                <div class="text-danger"> {{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.tax_number')</div>
+                                <input class="form-control" value="{{$supplier->tax_number}}" name="tax_number"
+                                       placeholder="@lang('app.tax_number')" type="text">
+                                @error('tax_number')
+                                <div class="text-danger"> {{$message}}</div>
+                                @enderror
+                            </div>  
+
+                        </div>
+                        <div class="row row-sm mb-4">
+                            <div class="col-lg">
+                                <div class="main-content-label mg-b-5">@lang('app.taxable')</div>
+                                <input class="form-control" value="{{$supplier->taxable}}" name="taxable"
+                                       placeholder="@lang('app.taxable')" type="text">
+
+                                @error('taxable')
                                 <div class="text-danger"> {{$message}}</div>
                                 @enderror
                             </div>
 
-                            <div class="col-lg">
-                                @livewire('company', ['selected_company'=> $receiver->company_id, 'status' => $status])
-                                @error('company_id')
-                                <div class="text-danger"> {{$message}}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-lg">
-                               @livewire('branch',['branches_for_company_id' => $receiver->company_id,'selected_branch' => $receiver->branch_id, 'status' => $status])
-                                @error('branch')
-                                    <div class="text-danger"> {{$message}}</div>
-                                @enderror
-                            </div>
                         </div>
-
-
 
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header pb-2"><h5 class="card-title mb-0 pb-0">Address Info</h5></div>
-                <div class="card-body text-success">
-                    <div class="row row-sm mb-4">
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.address1') *</div>
-                            <input class="form-control" name="address1" value="{{$receiver->address1}}"  placeholder="@lang('app.address')"
-                                   type="text">
 
-                            @error('address1')
-                            <div class="text-danger"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.address2')</div>
-                            <input class="form-control" name="address2" value="{{$receiver->address2}}"  placeholder="@lang('app.address')"
-                                   type="text">
-
-                            @error('address2')
-                            <div class="text-danger"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-
-                    </div>
-
-                    <div class="row row-sm mb-4">
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.lat')</div>
-                            <input class="form-control" value="{{$receiver->lat}}" name="lat" placeholder="@lang('app.lat')"
-                                   type="text">
-                        </div>
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.lng')</div>
-                            <input class="form-control" value="{{ $receiver->lng}}" name="lng" placeholder="@lang('app.lng')"
-                                   type="text">
-                        </div>
-                        <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.map_url')</div>
-                            <input class="form-control" value="{{$receiver->map_url}}" name="map_url" placeholder="@lang('app.map_url')"
-                                   type="text">
-                        </div>
-                    </div>
-
-                    <div class="row row-sm mb-4">
-                        <div class="col-lg-4">
-                          @livewire("location.cities",['selected_city' => $receiver->city_id, 'status' => $status])
-                            @error('city_id')
-                            <div class="text-danger"> {{$message}}</div>
-                            @enderror
-                        </div>
-                        
-                        <div class="col-lg-4">
-                            @livewire("location.areas",["selected_area" => $receiver->area_id, "areas_for_city_id" => $receiver->city_id, 'status' => $status])
-                        </div>
-                        @error('area_id')
-                        <div class="text-danger"> {{$message}}</div>
-                        @enderror
-
-                        <div class="col-lg-4">
-                            @livewire("location.subareas",["selected_subarea" => $receiver->subarea_id, "subareas_for_area_id" => $receiver->area_id, 'status' => $status])
-                            @error('subarea_id')
-                            <div class="text-danger"> {{$message}}</div>
-                            @enderror
-                        </div>
-                        
-                    </div>
-                </div>
                 <div class="card-footer mt-4">
                     <div class="form-group mb-0 mt-3 justify-content-end">
                         <div>
