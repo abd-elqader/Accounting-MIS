@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\CurrencyController;
 use App\Http\Controllers\Web\CustomerAddressController;
 use App\Http\Controllers\Web\CustomerContactController;
+use App\Http\Controllers\Web\CustomerServiceInvoiceController;
 use App\Http\Controllers\Web\IndustryController;
 use App\Http\Controllers\Web\SupplierController;
 use App\Http\Controllers\Web\DepartmentController;
@@ -71,6 +72,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('customers', CustomerController::class);
     Route::resource('customer_addresses', CustomerAddressController::class);
     Route::resource('customer_contacts', CustomerContactController::class);
+    Route::resource('customer_service_invoices', CustomerServiceInvoiceController::class);
     // end customers
 });
 
