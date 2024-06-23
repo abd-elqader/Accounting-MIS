@@ -3,13 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\CustomerContact;
-use App\Models\CustomerAddresses;
-use App\Services\CustomerService;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\EloquentDataTable;
 use App\Services\CustomerContactService;
 use Yajra\DataTables\Services\DataTable;
-use App\Services\CustomerAddressesService;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
@@ -65,13 +62,13 @@ class CustomerContactDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->title(__('lang.id')),
-            Column::make('contact')->title(__('lang.contact')),
-            Column::make('type')->title(__('lang.type')),
-            Column::make('description')->title(__('lang.description')),
-            Column::make('customer_id')->title(__('lang.customer_id')),
+            Column::make('id')->title(__('app.id')),
+            Column::make('contact')->title(__('app.contact')),
+            Column::make('type')->title(__('app.type')),
+            Column::make('description')->title(__('app.description')),
+            Column::make('customer_id')->title(__('app.customer_id')),
             Column::computed('action')
-                ->title(__('lang.actions'))
+                ->title(__('app.actions'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

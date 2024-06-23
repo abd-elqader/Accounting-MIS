@@ -3,7 +3,7 @@
 @section('content')
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.customerAddresses_page_title'),
+        'title' => trans('app.customer_addresses_page_title'),
         'first_list_item' => trans('app.customer_addresses'),
         'last_list_item' => trans('app.add_customer_addresses'),
     ])

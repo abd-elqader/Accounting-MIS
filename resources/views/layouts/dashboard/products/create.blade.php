@@ -4,8 +4,8 @@
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
         'title' => trans('app.products_page_title'),
-        'first_list_item' => trans('app.countries'),
-        'last_list_item' => trans('app.add_country'),
+        'first_list_item' => trans('app.products'),
+        'last_list_item' => trans('app.add_product'),
     ])
     {{--    end breadcrumb --}}
 
@@ -121,7 +121,7 @@
                         <div class="col-md-12">
                             <div class="form-check form-switch">
                                 <input name="taxable" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                                <label class="form-check-label" for="flexSwitchCheckChecked">@lang('lang.taxable')</label>
+                                <label class="form-check-label" for="flexSwitchCheckChecked">@lang('app.taxable')</label>
                             </div>
                         </div>
                         <hr>
@@ -129,7 +129,7 @@
                             {{-- start the product unit prices --}}
                             <div class="mb-3  product-unit-prices">
                                 <div class="mb-3">
-                                    <button id="add-product-unit-price" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.add_unit_price')}}</button>
+                                    <button id="add-product-unit-price" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('app.add_unit_price')}}</button>
                                 </div>
                             </div>
                             {{-- end the product unit prices --}}

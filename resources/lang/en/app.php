@@ -13,15 +13,102 @@ return [
     'filter' => 'Filter',
     'show' => 'Show',
     'edit' => 'Edit',
+    'create' => 'Create',
     'delete' => 'Delete',
-    'id' => 'ID',   
-    
+    'id' => 'ID',
+    'industry_id' => 'Industry ID',
+    'country_id' => 'Country ID',
+    'customer_id' => 'Customer ID',
+    'supplier_id' => 'Supplier ID',
+    'phone' => 'Phone',
+    'email' => 'Email',
+    'home' => 'Home',
+    'work' => 'Work',
+    'comunication' => 'Comunication',
+    'categories' => 'Categories',
 
 
     // login
     'sign_in' => 'Sign In',
     'password' => 'Password',
     'email_or_phone' => 'Email or Phone',
+
+
+    // Country
+    'countries_page_title' => 'Countries',
+    'all_countries' => 'All Countries',
+    'parent' => 'Parent',
+    'code' => 'Code',
+    'slug' => 'Slug',
+    'currency' => 'Currency', 
+    'currencies' => 'Currencies',
+    'country_slug' => 'Country Slug',
+    'country_code' => 'Country Code',
+    'country_name' => 'Country Name',
+    'is_active' => 'Is Active',
+    'add_country' => 'Add Country',
+
+
+//     app.services_page_title
+// app.services
+// app.add_service
+// NAME *
+// Name
+// APP.BRAND *
+// app.brand
+// APP.TAX *
+// app.tax
+// APP.STOCK *
+// app.stock
+// APP.DAILY_INCOME *
+// app.daily_income
+// APP.WEEKLY_INCOME *
+// app.weekly_income
+// MONTHLY INCOME *
+// Monthly Income
+// APP.YEARLY_INCOME *
+// app.yearly_income
+// DESCRIPTION *
+// lang.taxable
+    // Services
+    'services_page_title' => 'Services',
+    'services' => 'Services',
+    'add_service' => 'Add Service',
+    'brand' => 'Brand',
+    'tax' => 'Tax',
+    'stock' => 'Stock',
+    'daily_income' => 'Daily Income',
+    'weekly_income' => 'Weekly Income',
+    'yearly_income' => 'Yearly Income',
+    'description' => 'Description',
+    'add_unit_price' => 'Add Unit Price',
+
+    // Products
+    'products_page_title' => 'Products',
+    
+    // customers page
+    'customers_page_title' => 'Customers',
+    'customers' => 'Customers',
+    'add_customer' => 'Add Customer',
+
+    'customer_contact_page_title' => 'Customer Contacts',
+
+    // Customer Contacts
+    'customer_contact_page_title' => 'Customer Contacts',
+    'customer_contact' => 'Customer Contact',
+    'add_customer_contact' => 'Add Customer Contact',
+
+    'customer_contacts_page_title' => 'Customer Contacts',
+    'customer_contacts' => 'Customer Contact',
+    'all_customers' => 'All Customers',
+    'all_customer_contacts' => 'All Customer Contacts',
+    'contact' => 'Contact',
+
+    // Customer Addresses
+    'customer_addresses_page_title' => 'Customer Addresses',
+    'customer_addresses' => 'Customer Addresses',
+    'all_customer_addresses' => 'All Customer Addresses',
+    'add_customer_addresses' => 'Add Customer Address',
 
     // suppliers page
     'suppliers' => 'Suppliers',
@@ -83,6 +170,8 @@ return [
     'add_supplier_service_invoice_item' => 'Add Supplier Service Invoice item',
     'all_supplier_service_invoice_items' => 'All Supplier Service Invoice items',
     'edit_supplier_service_invoice_item' => 'Edit Supplier Service Invoice item',
+
+
     // Supplier Contacts
     'supplier_contact_page_title' => 'Supplier Contacts',
     'supplier_contact' => 'Supplier Contact',

@@ -107,7 +107,7 @@
                         <div class="col-md-12">
                             <div class="form-check form-switch">
                                 <input name="taxable" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                                <label class="form-check-label" for="flexSwitchCheckChecked">@lang('lang.taxable')</label>
+                                <label class="form-check-label" for="flexSwitchCheckChecked">@lang('app.taxable')</label>
                             </div>
                         </div>
                         <hr>
@@ -115,7 +115,7 @@
                             {{-- start the service unit prices --}}
                             <div class="mb-3  service-unit-prices">
                                 <div class="mb-3">
-                                    <button id="add-service-unit-price" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.add_unit_price')}}</button>
+                                    <button id="add-service-unit-price" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('app.add_unit_price')}}</button>
                                 </div>
                             </div>
                             {{-- end the service unit prices --}}
