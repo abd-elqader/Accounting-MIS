@@ -26,6 +26,14 @@ return [
     'work' => 'Work',
     'comunication' => 'Comunication',
     'categories' => 'Categories',
+    'no' => 'No',
+    'yes' => 'Yes',
+    'are_you_sure' => 'Are you sure?',
+    'not_found' => 'Not Found',
+    'something_went_wrong' => 'Something went wrong',
+    'success_operation' => 'Success Operation',
+    
+
 
 
     // login
@@ -94,6 +102,19 @@ return [
     'customer_product_invoice' => 'Customer Product Invoice',
     'customer_product_invoices' => 'Customer Product Invoices',
     'all_customer_product_invoices' => 'All Customer Product Invoices',
+
+
+    // Customer Service Invoices Taxes
+    'customer_service_invoice_taxes_page_title' => 'Customer Service Invoice Taxes',
+    'customer_service_invoice_taxes' => 'Customer Service Invoice Taxes',
+    'all_customer_service_invoice_taxes' => 'All Customer Service Invoice Taxes',
+    'customer_Service_invoice_taxes_page_title' => 'Customer Service Invoice Taxes',
+    'customer_Service_invoice_taxes' => 'Customer Service Invoice Tax',
+    'show_customer_Service_invoice_taxes' => 'Show Customer Service Invoice Tax',
+    'customer_service_invoice_id' => 'Customer Service Invoice ID',
+    'customer_service_invoice_tax' => 'Customer Service Invoice Tax',
+    'add_customer_service_invoice_tax' => 'Add Customer Service Invoice Tax',
+
 
 
     // suppliers page

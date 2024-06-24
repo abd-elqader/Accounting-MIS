@@ -64,9 +64,9 @@
 			<div class="confirm_content form-group text-center">
 				<div class="confirm_alert panel panel-primary">
 					<div class="panel-body">
-						<h3>{{ __('lang.are_you_sure') }}</h3>
-						<button id="btn_no" class="btn btn-primary">{{ __('lang.no') }}</button>
-						<button id="btn_yes" class="btn btn-danger" data-href="">{{ __('lang.yes') }}</button>
+						<h3>{{ __('app.are_you_sure') }}</h3>
+						<button id="btn_no" class="btn btn-primary">{{ __('app.no') }}</button>
+						<button id="btn_yes" class="btn btn-danger" data-href="">{{ __('app.yes') }}</button>
 					</div>
 				</div>
 			</div>

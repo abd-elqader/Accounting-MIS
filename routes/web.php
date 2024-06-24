@@ -20,6 +20,7 @@ use App\Http\Controllers\Web\CustomerProductInvoiceController;
 use App\Http\Controllers\Web\CustomerServiceInvoiceController;
 use App\Http\Controllers\Web\SupplierProductInvoiceController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceController;
+use App\Http\Controllers\Web\CustomerServiceInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierProductInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierProductInvoiceItemController;
@@ -74,6 +75,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('customer_addresses', CustomerAddressController::class);
     Route::resource('customer_contacts', CustomerContactController::class);
     Route::resource('customer_service_invoices', CustomerServiceInvoiceController::class);
+    Route::resource('customer_service_invoice_taxes', CustomerServiceInvoiceTaxController::class);
     Route::resource('customer_product_invoices', CustomerProductInvoiceController::class);
     // end customers
 });
