@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Web\CustomerController;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard\Switcherpage;
@@ -9,14 +8,16 @@ use App\Http\Controllers\Web\ProductController;
 use App\Http\Controllers\Web\ServiceController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\CurrencyController;
-use App\Http\Controllers\Web\CustomerAddressController;
-use App\Http\Controllers\Web\CustomerContactController;
-use App\Http\Controllers\Web\CustomerServiceInvoiceController;
+use App\Http\Controllers\Web\CustomerController;
 use App\Http\Controllers\Web\IndustryController;
 use App\Http\Controllers\Web\SupplierController;
 use App\Http\Controllers\Web\DepartmentController;
+use App\Http\Controllers\Web\CustomerAddressController;
+use App\Http\Controllers\Web\CustomerContactController;
 use App\Http\Controllers\Web\SupplierContactController;
 use App\Http\Controllers\Web\SupplierAddressesController;
+use App\Http\Controllers\Web\CustomerProductInvoiceController;
+use App\Http\Controllers\Web\CustomerServiceInvoiceController;
 use App\Http\Controllers\Web\SupplierProductInvoiceController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceController;
 use App\Http\Controllers\Web\SupplierProductInvoiceTaxController;
@@ -73,6 +74,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('customer_addresses', CustomerAddressController::class);
     Route::resource('customer_contacts', CustomerContactController::class);
     Route::resource('customer_service_invoices', CustomerServiceInvoiceController::class);
+    Route::resource('customer_product_invoices', CustomerProductInvoiceController::class);
     // end customers
 });
 

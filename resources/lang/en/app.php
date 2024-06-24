@@ -48,28 +48,6 @@ return [
     'is_active' => 'Is Active',
     'add_country' => 'Add Country',
 
-
-//     app.services_page_title
-// app.services
-// app.add_service
-// NAME *
-// Name
-// APP.BRAND *
-// app.brand
-// APP.TAX *
-// app.tax
-// APP.STOCK *
-// app.stock
-// APP.DAILY_INCOME *
-// app.daily_income
-// APP.WEEKLY_INCOME *
-// app.weekly_income
-// MONTHLY INCOME *
-// Monthly Income
-// APP.YEARLY_INCOME *
-// app.yearly_income
-// DESCRIPTION *
-// lang.taxable
     // Services
     'services_page_title' => 'Services',
     'services' => 'Services',
@@ -109,6 +87,14 @@ return [
     'customer_addresses' => 'Customer Addresses',
     'all_customer_addresses' => 'All Customer Addresses',
     'add_customer_addresses' => 'Add Customer Address',
+
+    // Customer Products Invoices
+    'customer_product_invoices_page_title' => 'Customer Product Invoices',
+    'add_customer_product_invoice' => 'Add Customer Product Invoice',
+    'customer_product_invoice' => 'Customer Product Invoice',
+    'customer_product_invoices' => 'Customer Product Invoices',
+    'all_customer_product_invoices' => 'All Customer Product Invoices',
+
 
     // suppliers page
     'suppliers' => 'Suppliers',
