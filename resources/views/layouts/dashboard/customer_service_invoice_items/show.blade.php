@@ -3,9 +3,9 @@
 @section('content')
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.supplier_service_invoice_items_page_title'),
-        'first_list_item' => trans('app.supplier_service_invoice_items'),
-        'last_list_item' => trans('app.show_supplier_service_invoice_items'),
+        'title' => trans('app.customer_service_invoice_items_page_title'),
+        'first_list_item' => trans('app.customer_service_invoice_items'),
+        'last_list_item' => trans('app.show_customer_service_invoice_items'),
     ])
     {{--    end breadcrumb --}}
 
@@ -17,29 +17,29 @@
                     <div class="row row-sm mb-4">
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.count')</div>
-                            <label class="form-control">{{ $supplierServiceInvoiceItem->count }}</label>
+                            <label class="form-control">{{ $customerServiceInvoiceItem->count }}</label>
                         </div>
                     </div>
 
                     <div class="row row-sm mb-4">
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.price')</div>
-                            <label class="form-control">{{ $supplierServiceInvoiceItem->price }}</label>
+                            <label class="form-control">{{ $customerServiceInvoiceItem->price }}</label>
                         </div>
 
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.total_items_cost')</div>
-                            <label class="form-control">{{ $supplierServiceInvoiceItem->total_items_cost }}</label>
+                            <label class="form-control">{{ $customerServiceInvoiceItem->total_items_cost }}</label>
                         </div>
                         
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.service_id')</div>
-                            <label class="form-control">{{ $supplierServiceInvoiceItem->service_id }}</label>
+                            <label class="form-control">{{ $customerServiceInvoiceItem->service_id }}</label>
                         </div>
 
                         <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.supplier_service_invoice_id')</div>
-                            <label class="form-control">{{ $supplierServiceInvoiceItem->SSI_id }}</label>
+                            <div class="main-content-label mg-b-5">@lang('app.customer_service_invoice_id')</div>
+                            <label class="form-control">{{ $customerServiceInvoiceItem->CSI_id }}</label>
                         </div>
                     </div>
                 </div>

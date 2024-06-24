@@ -3,9 +3,9 @@
 @section('content')
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.supplier_product_invoice_taxes_page_title'),
-        'first_list_item' => trans('app.supplier_product_invoice_taxes'),
-        'last_list_item' => trans('app.show_supplier_product_invoice_taxes'),
+        'title' => trans('app.supplier_product_invoice_items_page_title'),
+        'first_list_item' => trans('app.supplier_product_invoice_items'),
+        'last_list_item' => trans('app.show_supplier_product_invoice_items'),
     ])
     {{--    end breadcrumb --}}
 

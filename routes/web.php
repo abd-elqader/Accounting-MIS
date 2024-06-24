@@ -2,6 +2,7 @@
 
 use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Dashboard\Customer;
 use App\Http\Livewire\Dashboard\Switcherpage;
 use App\Http\Controllers\Web\CountryController;
 use App\Http\Controllers\Web\ProductController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceController;
 use App\Http\Controllers\Web\CustomerServiceInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierProductInvoiceTaxController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
+use App\Http\Controllers\Web\CustomerServiceInvoiceItemController;
 use App\Http\Controllers\Web\SupplierProductInvoiceItemController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceItemController;
 
@@ -77,6 +79,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('customer_service_invoices', CustomerServiceInvoiceController::class);
     Route::resource('customer_service_invoice_taxes', CustomerServiceInvoiceTaxController::class);
     Route::resource('customer_product_invoices', CustomerProductInvoiceController::class);
+    Route::resource('customer_service_invoice_items', CustomerServiceInvoiceItemController::class);
     // end customers
 });
 

@@ -20,6 +20,7 @@ return [
     'country_id' => 'Country ID',
     'customer_id' => 'Customer ID',
     'supplier_id' => 'Supplier ID',
+    'service_id' => 'Service ID',
     'phone' => 'Phone',
     'email' => 'Email',
     'home' => 'Home',
@@ -115,6 +116,13 @@ return [
     'customer_service_invoice_tax' => 'Customer Service Invoice Tax',
     'add_customer_service_invoice_tax' => 'Add Customer Service Invoice Tax',
 
+    // Customer Service Invoices Items
+    'customer_service_invoice_items_page_title' => 'Customer Service Invoice Items',
+    'customer_service_invoice_item' => 'Customer Service Invoice Item',
+    'all_customer_service_invoice_items' => 'All Customer Service Invoice Items',
+    'add_customer_service_invoice_item' => 'Add Customer Service Invoice Item',
+    'customer_service_invoice_items' => 'Customer Service Invoice Items',
+    'show_customer_service_invoice_items' => 'Show Customer Service Invoice Items',
 
 
     // suppliers page
