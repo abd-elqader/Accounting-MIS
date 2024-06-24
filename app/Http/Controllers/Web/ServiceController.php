@@ -37,7 +37,7 @@ class ServiceController extends Controller
             $site = $this->serviceService->findById(id: $id);
             return view('Dashboard.services.edit', compact('site'));
         }catch(Exception $e){
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
         
     }//end of create
@@ -53,7 +53,7 @@ class ServiceController extends Controller
         // userCan(request: $request, permission: 'create_site');
         try {
             $this->serviceService->store(data: $request->validated());
-            return redirect()->route('services.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('services.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
             return redirect()->back()->with('message', $e->getMessage());
         }
@@ -64,7 +64,7 @@ class ServiceController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try {
             $this->serviceService->update($id, $request->validated());
-            return redirect()->route('services.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('services.index')->with('message', __('app.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -76,8 +76,8 @@ class ServiceController extends Controller
         try {
             $result = $this->serviceService->destroy($id);
             if(!$result)
-                return apiResponse(message: trans('lang.not_found'),code: 404);
-            return apiResponse(message: trans('lang.success_operation'));
+                return apiResponse(message: trans('app.not_found'),code: 404);
+            return apiResponse(message: trans('app.success_operation'));
         } catch (\Exception $e) {
             return apiResponse(message: $e->getMessage(),code: 422);
         }
@@ -90,7 +90,7 @@ class ServiceController extends Controller
             $currrency = $this->serviceService->findById(id: $id);
             return view('layouts.dashboard.services.show', compact('service'));
         }catch(Exception $e){
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
     } //end of show
 

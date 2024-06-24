@@ -37,7 +37,7 @@ class CurrencyController extends Controller
             $site = $this->currencyService->findById(id: $id);
             return view('Dashboard.currencies.edit', compact('site'));
         }catch(Exception $e){
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
         
     }//end of create
@@ -53,7 +53,7 @@ class CurrencyController extends Controller
         // userCan(request: $request, permission: 'create_site');
         try {
             $this->currencyService->store(data: $request->validated());
-            return redirect()->route('currencies.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('currencies.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
             return redirect()->back()->with('message', $e->getMessage());
         }
@@ -64,7 +64,7 @@ class CurrencyController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try {
             $this->currencyService->update($id, $request->validated());
-            return redirect()->route('currencies.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('currencies.index')->with('message', __('app.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -76,8 +76,8 @@ class CurrencyController extends Controller
         try {
             $result = $this->currencyService->destroy($id);
             if(!$result)
-                return apiResponse(message: trans('lang.not_found'),code: 404);
-            return apiResponse(message: trans('lang.success_operation'));
+                return apiResponse(message: trans('app.not_found'),code: 404);
+            return apiResponse(message: trans('app.success_operation'));
         } catch (\Exception $e) {
             return apiResponse(message: $e->getMessage(),code: 422);
         }
@@ -90,7 +90,7 @@ class CurrencyController extends Controller
             $currrency = $this->currencyService->findById(id: $id);
             return view('layouts.dashboard.currencies.show', compact('currency'));
         }catch(Exception $e){
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
     } //end of show
 

@@ -40,7 +40,7 @@ class CustomerAddressController extends Controller
             return view('layouts.Dashboard.customer_addresses.edit', compact('customer_address'));
         }catch(Exception $e){
             dd($e);
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
         
     }//end of create
@@ -58,7 +58,7 @@ class CustomerAddressController extends Controller
         // userCan(request: $request, permission: 'create_site');
         try {
             $this->customerAddressService->store(data: $request->validated());
-            return redirect()->route('customer_addresses.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('customer_addresses.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
             dd($e);
             return redirect()->back()->with('message', $e->getMessage());
@@ -70,7 +70,7 @@ class CustomerAddressController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try {
             $this->customerAddressService->update($id, $request->validated());
-            return redirect()->route('customer_addresses.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('customer_addresses.index')->with('message', __('app.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -82,8 +82,8 @@ class CustomerAddressController extends Controller
         try {
             $result = $this->customerAddressService->destroy($id);
             if(!$result)
-                return apiResponse(message: trans('lang.not_found'),code: 404);
-            return apiResponse(message: trans('lang.success_operation'));
+                return apiResponse(message: trans('app.not_found'),code: 404);
+            return apiResponse(message: trans('app.success_operation'));
         } catch (\Exception $e) {
             return apiResponse(message: $e->getMessage(),code: 422);
         }
@@ -96,7 +96,7 @@ class CustomerAddressController extends Controller
             $customerAddress = $this->customerAddressService->findById(id: $id);
             return view('layouts.dashboard.customer_addresses.show', compact('customerAddress'));
         }catch(Exception $e){
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
     } //end of show
 

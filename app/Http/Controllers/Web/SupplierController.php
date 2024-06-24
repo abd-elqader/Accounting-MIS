@@ -35,7 +35,7 @@ class SupplierController extends Controller
             $supplier = $this->supplierService->findById(id: $id);
             return view('layouts.Dashboard.suppliers.edit', compact('supplier'));
         }catch(Exception $e){
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
         
     }//end of create
@@ -51,7 +51,7 @@ class SupplierController extends Controller
         // userCan(request: $request, permission: 'create_site');
         try {
             $this->supplierService->store(data: $request->validated());
-            return redirect()->route('suppliers.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('suppliers.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
             return redirect()->back()->with('message', $e->getMessage());
         }
@@ -62,7 +62,7 @@ class SupplierController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try {
             $this->supplierService->update($id, $request->validated());
-            return redirect()->route('suppliers.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('suppliers.index')->with('message', __('app.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -74,8 +74,8 @@ class SupplierController extends Controller
         try {
             $result = $this->supplierService->destroy($id);
             if(!$result)
-                return apiResponse(message: trans('lang.not_found'),code: 404);
-            return apiResponse(message: trans('lang.success_operation'));
+                return apiResponse(message: trans('app.not_found'),code: 404);
+            return apiResponse(message: trans('app.success_operation'));
         } catch (\Exception $e) {
             return apiResponse(message: $e->getMessage(),code: 422);
         }
@@ -88,7 +88,7 @@ class SupplierController extends Controller
             $supplier = $this->supplierService->findById(id: $id);
             return view('layouts.dashboard.suppliers.show', compact('supplier'));
         }catch(Exception $e){
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
     } //end of show
 

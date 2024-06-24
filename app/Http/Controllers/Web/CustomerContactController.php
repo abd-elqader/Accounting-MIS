@@ -39,7 +39,7 @@ class CustomerContactController extends Controller
             return view('layouts.Dashboard.customer_contacts.edit', compact('customer_contact'));
         }catch(Exception $e){
             dd($e);
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
         
     }//end of create
@@ -57,7 +57,7 @@ class CustomerContactController extends Controller
         // userCan(request: $request, permission: 'create_site');
         try {
             $this->customerContactService->store(data: $request->validated());
-            return redirect()->route('customer_contacts.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('customer_contacts.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
             dd($e);
             return redirect()->back()->with('message', $e->getMessage());
@@ -69,7 +69,7 @@ class CustomerContactController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try {
             $this->customerContactService->update($id, $request->validated());
-            return redirect()->route('customer_contacts.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('customer_contacts.index')->with('message', __('app.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -81,8 +81,8 @@ class CustomerContactController extends Controller
         try {
             $result = $this->customerContactService->destroy($id);
             if(!$result)
-                return apiResponse(message: trans('lang.not_found'),code: 404);
-            return apiResponse(message: trans('lang.success_operation'));
+                return apiResponse(message: trans('app.not_found'),code: 404);
+            return apiResponse(message: trans('app.success_operation'));
         } catch (\Exception $e) {
             return apiResponse(message: $e->getMessage(),code: 422);
         }
@@ -96,7 +96,7 @@ class CustomerContactController extends Controller
             return view('layouts.dashboard.customer_contacts.show', compact('customerContact'));
         }catch(Exception $e){
             dd($e);
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
     } //end of show
 

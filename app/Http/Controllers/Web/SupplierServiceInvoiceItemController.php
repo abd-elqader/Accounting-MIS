@@ -35,7 +35,7 @@ class SupplierServiceInvoiceItemController extends Controller
             return view('layouts.Dashboard.supplier_service_invoice_items.edit', compact('supplierServiceInvoiceItem'));
         }catch(Exception $e){
             dd($e);
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
         
     }//end of create
@@ -52,7 +52,7 @@ class SupplierServiceInvoiceItemController extends Controller
         // userCan(request: $request, permission: 'create_site');
         try {
             $this->supplierServiceInvoiceItemService->store(data: $request->validated());
-            return redirect()->route('supplier_service_invoice_items.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('supplier_service_invoice_items.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
             dd($e);
             return redirect()->back()->with('message', $e->getMessage());
@@ -64,7 +64,7 @@ class SupplierServiceInvoiceItemController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try {
             $this->supplierServiceInvoiceItemService->update($id, $request->validated());
-            return redirect()->route('supplier_service_invoice_items.index')->with('message', __('lang.success_operation'));
+            return redirect()->route('supplier_service_invoice_items.index')->with('message', __('app.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -76,8 +76,8 @@ class SupplierServiceInvoiceItemController extends Controller
         try {
             $result = $this->supplierServiceInvoiceItemService->destroy($id);
             if(!$result)
-                return apiResponse(message: trans('lang.not_found'),code: 404);
-            return apiResponse(message: trans('lang.success_operation'));
+                return apiResponse(message: trans('app.not_found'),code: 404);
+            return apiResponse(message: trans('app.success_operation'));
         } catch (\Exception $e) {
             return apiResponse(message: $e->getMessage(),code: 422);
         }
@@ -91,7 +91,7 @@ class SupplierServiceInvoiceItemController extends Controller
             return view('layouts.dashboard.supplier_service_invoice_items.show', compact('supplierServiceInvoiceItem'));
         }catch(Exception $e){
             dd($e);
-            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+            return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
     } //end of show
 
