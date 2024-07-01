@@ -27,13 +27,13 @@
                         <div class="left-content">
                             <a class="btn btn-primary" href="{{ route('customer_contacts.create') }}"><i
                                     class="fe fe-plus me-2"></i>@lang('app.new')</a>
-                            <div class="btn-group ms-2 mt-2 mb-2">
+                            <!-- <div class="btn-group ms-2 mt-2 mb-2">
                                 <div class="dropdown">
                                     <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
                                         data-bs-toggle="dropdown" id="dropdownMenuButton" type="button">@lang('app.actions')
                                         <i class="fas fa-caret-down ms-1"></i></button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

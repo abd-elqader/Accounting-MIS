@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CustomerProductInvoiceService;
 use App\DataTables\CustomerProductInvoicesDataTable;
+use App\DTO\CustomerProductInvoice\CustomerProductInvoiceDTO;
 use App\Http\Requests\StoreCustomerProductInvoiceRequest;
 use App\Http\Requests\UpdateCustomerProductInvoiceRequest;
 
@@ -49,11 +50,11 @@ class CustomerProductInvoiceController extends Controller
     {
         // userCan(request: $request, permission: 'create_site');
         try {
-            $this->customerProductInvoiceService->store(data: $request->validated());
+            $customerProductInvoiceDTO = CustomerProductInvoiceDTO::fromRequest($request);
+            $this->customerProductInvoiceService->store(DTO: $customerProductInvoiceDTO);
             return redirect()->route('customer_product_invoices.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
-            dd($e);
-            return redirect()->back()->with('message', $e->getMessage());
+            return apiResponse(message: $e->getMessage(), code: 422);
         }
     }//end of store
 

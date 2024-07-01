@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\CustomerProductInvoice\CustomerProductInvoiceDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorecustomerProductInvoiceRequest extends FormRequest
@@ -22,11 +23,19 @@ class StorecustomerProductInvoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'total_invoice' => 'nullable|string',
-            'reversed' => 'nullable|string',
-            'due_date' => 'nullable|string',
-            'creation_date' => 'nullable|string',
+            'due_date' => 'required|string',
             'customer_id' => 'nullable|exists:customers,id',
+            'currency_id' => 'required|exists:currencies,id',
+
+            'invoice_items_product_id'=>'nullable|array',
+            'invoice_items_product_id.*'=>'required|integer|exists:products,id',
+            
+            'invoice_items_count'=>'nullable|array',
+            'invoice_items_count.*'=>'required|integer|min:1',
+
+            'invoice_taxes_tax_id'=>'nullable|array',
+            'invoice_taxes_tax_id.*'=>'required|integer|exists:taxes,id',
+
         ];
     }
 

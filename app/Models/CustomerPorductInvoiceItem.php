@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerProductInvoice extends Model
+class CustomerProductInvoiceItem extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class CustomerProductInvoice extends Model
      *
      * @var string
      */
-    protected $table = 'customer_product_invoices';
+    protected $table = 'customer_product_invoice_items';
     
     /**
      * The attributes that are mass assignable.
@@ -40,14 +40,4 @@ class CustomerProductInvoice extends Model
 
 
     ##--------------------------------- CUSTOM FUNCTIONS
-
-
-    public function CustomerProductInvoiceItems(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(CustomerProductInvoiceItem::class,  'CPI_id', );
-    }
-    public function CustomerProductInvoiceTaxs(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(CustomerProductInvoiceTax::class,  'CPI_id', );
-    }
 }

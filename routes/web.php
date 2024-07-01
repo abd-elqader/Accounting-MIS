@@ -27,6 +27,7 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 use App\Http\Controllers\Web\CustomerServiceInvoiceItemController;
 use App\Http\Controllers\Web\SupplierProductInvoiceItemController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceItemController;
+use App\Http\Controllers\Web\TaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,9 +79,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('customer_contacts', CustomerContactController::class);
     Route::resource('customer_service_invoices', CustomerServiceInvoiceController::class);
     Route::resource('customer_service_invoice_taxes', CustomerServiceInvoiceTaxController::class);
-    Route::resource('customer_product_invoices', CustomerProductInvoiceController::class);
     Route::resource('customer_service_invoice_items', CustomerServiceInvoiceItemController::class);
+    Route::resource('customer_product_invoices', CustomerProductInvoiceController::class);
     // end customers
+    
+    Route::resource('taxes', TaxController::class);
+    
 });
 
 
