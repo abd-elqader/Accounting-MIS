@@ -2,16 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Models\customerContact;
-use App\Models\customerAddresses;
-use App\Services\customerService;
 use Yajra\DataTables\Html\Column;
-use App\Models\CustomerServiceInvoice;
+use App\Models\customerServiceInvoice;
 use Yajra\DataTables\EloquentDataTable;
-use App\Services\customerContactService;
 use Yajra\DataTables\Services\DataTable;
-use App\Http\Livewire\Dashboard\Customer;
-use App\Services\customerAddressesService;
 use App\Services\customerServiceInvoiceService;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
@@ -72,7 +66,7 @@ class CustomerServiceInvoicesDataTable extends DataTable
             Column::make('total_invoice')->title(__('app.total_invoice')),
             Column::make('reversed')->title(__('app.reversed')),
             Column::make('due_date')->title(__('app.due_date')),
-            Column::make('creation_date')->title(__('app.creation_date')),
+            Column::make('created_at')->title(__('app.creation_date')),
             Column::make('customer_id')->title(__('app.customer_id')),
             Column::computed('action')
                 ->title(__('app.actions'))

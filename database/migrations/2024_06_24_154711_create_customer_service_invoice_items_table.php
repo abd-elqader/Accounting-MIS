@@ -8,15 +8,17 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('customer_service_invoice_items', function (Blueprint $table) {
             $table->id();
-            $table->string('count');
-            $table->string('price');
-            $table->string('total_items_cost');
-            $table->foreignId('CSI_id')->constrained('customer_service_invoices')->onDelete('cascade');
+            $table->integer('count');
+            $table->float('price');
+            $table->float('total_items_cost');
+            $table->foreignId('CPI_id')->constrained('customer_service_invoices')->onDelete('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->timestamps();
         });
@@ -24,8 +26,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('customer_service_invoice_items');
     }

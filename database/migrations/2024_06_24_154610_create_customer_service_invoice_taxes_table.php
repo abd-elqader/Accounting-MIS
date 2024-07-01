@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('customer_service_invoice_taxes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('value');
-            $table->string('type');
-            $table->foreignId('CSI_id')->constrained('customer_service_invoices')->onDelete('cascade');
+            $table->foreignId('CPI_id')->constrained('customer_service_invoices')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Tax::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->float('value');
+            $table->enum('value_type', ['percentage', 'amount']);
             $table->timestamps();
         });
     }

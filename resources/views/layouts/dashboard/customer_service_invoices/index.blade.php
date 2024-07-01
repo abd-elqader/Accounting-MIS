@@ -7,15 +7,15 @@
 @section('content')
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.customer_service_invoices_page_title'),
-        'first_list_item' => trans('app.customer_service_invoices'),
-        'last_list_item' => trans('app.all_customer_service_invoices'),
+        'title' => trans('app.customer_product_invoices_page_title'),
+        'first_list_item' => trans('app.customer_product_invoices'),
+        'last_list_item' => trans('app.all_customer_product_invoices'),
     ])
     {{--    end breadcrumb --}}
 
 
     <!--start filters section -->
-    @include('layouts.dashboard.customer_service_invoices.components.filters')
+    @include('layouts.dashboard.customer_product_invoices.components.filters')
     <!--end filterd section -->
     <!--Row-->
     <!-- Row -->
@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <div class="breadcrumb-header justify-content-between">
                         <div class="left-content">
-                            <a class="btn btn-primary" href="{{ route('customer_service_invoices.create') }}"><i
+                            <a class="btn btn-primary" href="{{ route('customer_product_invoices.create') }}"><i
                                     class="fe fe-plus me-2"></i>@lang('app.new')</a>
                             <div class="btn-group ms-2 mt-2 mb-2">
                                 <div class="dropdown">

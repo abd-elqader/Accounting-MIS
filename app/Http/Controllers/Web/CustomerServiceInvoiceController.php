@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Web;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\customerServiceInvoiceService;
-use App\DataTables\customerServiceInvoicesDataTable;
-use App\Http\Requests\StorecustomerServiceInvoiceRequest;
-use App\Http\Requests\UpdatecustomerServiceInvoiceRequest;
+use App\Services\CustomerServiceInvoiceService;
+use App\DataTables\CustomerServiceInvoicesDataTable;
+use App\DTO\CustomerServiceInvoice\CustomerServiceInvoiceDTO;
+use App\Http\Requests\StoreCustomerServiceInvoiceRequest;
+use App\Http\Requests\UpdateCustomerServiceInvoiceRequest;
 
 
 class CustomerServiceInvoiceController extends Controller
@@ -34,7 +35,6 @@ class CustomerServiceInvoiceController extends Controller
             $customerServiceInvoice = $this->customerServiceInvoiceService->findById(id: $id);
             return view('layouts.Dashboard.customer_service_invoices.edit', compact('customerServiceInvoice'));
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
         
@@ -42,7 +42,6 @@ class CustomerServiceInvoiceController extends Controller
 
     public function create(Request $request)
     {
-
         // userCan(request: $request, permission: 'create_site');
         return view('layouts.dashboard.customer_service_invoices.create');
     }//end of create
@@ -51,11 +50,11 @@ class CustomerServiceInvoiceController extends Controller
     {
         // userCan(request: $request, permission: 'create_site');
         try {
-            $this->customerServiceInvoiceService->store(data: $request->validated());
+            $customerServiceInvoiceDTO = CustomerServiceInvoiceDTO::fromRequest($request);
+            $this->customerServiceInvoiceService->store(DTO: $customerServiceInvoiceDTO);
             return redirect()->route('customer_service_invoices.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
-            dd($e);
-            return redirect()->back()->with('message', $e->getMessage());
+            return apiResponse(message: $e->getMessage(), code: 422);
         }
     }//end of store
 
