@@ -67,16 +67,16 @@ class CustomerServiceInvoiceService extends BaseService
     private function refreshInvoice(customerServiceInvoice $invoice)
     {
         $totalServicesCost = $invoice->customerServiceInvoiceItems()->sum('total_items_cost');
-        $totalInvoice = $totalServicesCost;
         $totalTaxes = $invoice->customerServiceInvoiceTaxs()->get();
+        $taxes = 0;
         foreach($totalTaxes as $tax)
         {
             if($tax->value_type == "amount")
-                $totalInvoice = $totalInvoice + $tax->value;
+                $taxes += $tax->value;
             else
-                $totalInvoice = $totalInvoice + $totalInvoice * ($tax->value/100);
+                $taxes += $totalServicesCost * ($tax->value/100);
         }
-        $invoice->total_invoice = $totalInvoice;
+        $invoice->total_invoice = $totalServicesCost + $taxes;
         $invoice->save();
         $invoice->refresh();
     }

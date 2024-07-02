@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\ActivationStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -8,15 +9,20 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('supplier_service_invoice_items', function (Blueprint $table) {
             $table->id();
-            $table->string('count');
-            $table->string('price');
-            $table->string('total_items_cost');
-            $table->foreignId('SSI_id')->constrained('supplier_service_invoices')->onDelete('cascade');
+            $table->integer('count');
+            $table->float('price');
+            $table->float('total_items_cost');
+            // $table->float('tax');
+            // $table->boolean('taxable')->default(ActivationStatusEnum::ACTIVE);
+            // $table->float('total_cost');
+            $table->foreignId('CSI_id')->constrained('supplier_service_invoices')->onDelete('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->timestamps();
         });
@@ -24,8 +30,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('supplier_service_invoice_items');
     }

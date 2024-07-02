@@ -2,16 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\SupplierContact;
-use App\Models\SupplierAddresses;
-use App\Models\supplierServiceInvoice;
-use App\Services\SupplierService;
 use Yajra\DataTables\Html\Column;
+use App\Models\supplierServiceInvoice;
 use Yajra\DataTables\EloquentDataTable;
-use App\Services\SupplierContactService;
 use Yajra\DataTables\Services\DataTable;
-use App\Services\SupplierAddressesService;
-use App\Services\SupplierServiceInvoiceService;
+use App\Services\supplierServiceInvoiceService;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
@@ -25,7 +20,7 @@ class SupplierServiceInvoicesDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function(supplierServiceInvoice $model){
+        ->addColumn('action', function(SupplierServiceInvoice $model){
             return view('layouts.dashboard.supplier_service_invoices.components.actions',compact('model'))->render();
         })
             ->setRowId('id');
@@ -71,7 +66,7 @@ class SupplierServiceInvoicesDataTable extends DataTable
             Column::make('total_invoice')->title(__('app.total_invoice')),
             Column::make('reversed')->title(__('app.reversed')),
             Column::make('due_date')->title(__('app.due_date')),
-            Column::make('creation_date')->title(__('app.creation_date')),
+            Column::make('created_at')->title(__('app.creation_date')),
             Column::make('supplier_id')->title(__('app.supplier_id')),
             Column::computed('action')
                 ->title(__('app.actions'))
@@ -87,6 +82,6 @@ class SupplierServiceInvoicesDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Suppliers_' . date('YmdHis');
+        return 'suppliers_' . date('YmdHis');
     }
 }

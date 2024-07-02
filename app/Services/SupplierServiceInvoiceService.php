@@ -2,12 +2,17 @@
 
 namespace App\Services;
 
+use App\DTO\SupplierServiceInvoice\SupplierServiceInvoiceDTO;
 use App\Exceptions\NotFoundException;
-use App\Models\SupplierServiceInvoice;
+use App\Models\supplierServiceInvoice;
+use App\Models\Service;
+use App\Models\Tax;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use App\QueryFilters\SupplierContactFilters;
+
 use App\QueryFilters\SupplierServiceInvoiceFilters;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class SupplierServiceInvoiceService extends BaseService
 {
@@ -39,14 +44,75 @@ class SupplierServiceInvoiceService extends BaseService
         return $this->queryGet(filters: $filters)->select(['id'])->get();
     }
 
-    public function store(array $data = []):Model|bool
+    public function store(SupplierServiceInvoiceDTO $DTO):Model|bool
     {
         // $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-        $Supplier = $this->getModel()->create($data);
-        if (!$Supplier)
+        $invoiceData = $DTO->invoiceData();
+        DB::beginTransaction();
+        $supplierServiceInvoice = $this->getModel()->create($invoiceData);
+        $invoiceItemsData = $this->prepareInvoiceItemsData(currency: $invoiceData['currency_id'], invoiceItems: $DTO->invoiceItems());
+        if($invoiceItemsData)
+            $supplierServiceInvoice->supplierServiceInvoiceItems()->createMany($invoiceItemsData);
+        $invoiceTaxesData = $this->prepareInvoiceTaxesData(invoiceTaxes: $DTO->invoiceTaxes());
+        if($invoiceTaxesData)
+            $supplierServiceInvoice->supplierServiceInvoiceTaxs()->createMany($invoiceTaxesData);
+        $this->refreshInvoice(invoice: $supplierServiceInvoice);
+        DB::commit();
+        if (!$supplierServiceInvoice)
             return false ;
-        return $Supplier;
+        return $supplierServiceInvoice;
     } //end of store
+
+
+    private function refreshInvoice(supplierServiceInvoice $invoice)
+    {
+        $totalServicesCost = $invoice->supplierServiceInvoiceItems()->sum('total_items_cost');
+        $totalTaxes = $invoice->supplierServiceInvoiceTaxs()->get();
+        $taxes = 0;
+        foreach($totalTaxes as $tax)
+        {
+            if($tax->value_type == "amount")
+                $taxes += $tax->value;
+            else
+                $taxes += $totalServicesCost * ($tax->value/100);
+        }
+        $invoice->total_invoice = $totalServicesCost + $taxes;
+        $invoice->save();
+        $invoice->refresh();
+    }
+    private function prepareInvoiceItemsData(string $currency, array $invoiceItems = [])
+    {
+        $data = [];
+        for($i = 0; $i<count($invoiceItems); $i++)
+        {
+            $service = Service::find($invoiceItems[$i]['service_id']);
+            $unitPrice = $service->unitPrices()->where('currency_id', $currency)->first();
+            if(!$unitPrice)
+                throw new Exception("currrecy not avaliable");
+            $servicePrice = $unitPrice->price;
+            $data[$i]['service_id'] = $service->id;
+            $data[$i]['price'] = $servicePrice;
+            $data[$i]['total_items_cost'] = $servicePrice * $invoiceItems[$i]['count'];
+            // $data[$i]['tax'] = $service->taxable ? $service->tax:0;
+            // $data[$i]['taxable'] = $service->getRawOriginal('taxable');
+            // $data[$i]['total_cost'] = $servicePrice * $invoiceItems[$i]['count'];
+            $data[$i]['count'] = $invoiceItems[$i]['count'];
+        }
+        return $data;
+    }
+
+    private function prepareInvoiceTaxesData(array $invoiceTaxes = [])
+    {
+        $data = [];
+        for($i = 0; $i<count($invoiceTaxes); $i++)
+        {
+            $tax = Tax::find($invoiceTaxes[$i]['tax_id']);
+            $data[$i]['tax_id'] = $tax->id;
+            $data[$i]['value'] = $tax->value;
+            $data[$i]['value_type'] = $tax->value_type;
+        }
+        return $data;
+    }
 
     public function update(int $id, array $data=[])
     {

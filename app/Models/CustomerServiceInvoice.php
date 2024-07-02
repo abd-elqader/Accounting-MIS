@@ -44,10 +44,10 @@ class CustomerServiceInvoice extends Model
 
     public function CustomerServiceInvoiceItems(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(CustomerServiceInvoiceItem::class,  'CPI_id', );
+        return $this->hasMany(CustomerServiceInvoiceItem::class,  'CSI_id', );
     }
     public function CustomerServiceInvoiceTaxs(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(CustomerServiceInvoiceTax::class,  'CPI_id', );
+        return $this->hasMany(CustomerServiceInvoiceTax::class,  'CSI_id', );
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class supplierServiceInvoice extends Model
+class SupplierServiceInvoice extends Model
 {
     use HasFactory;
 
@@ -40,4 +40,14 @@ class supplierServiceInvoice extends Model
 
 
     ##--------------------------------- CUSTOM FUNCTIONS
+
+
+    public function SupplierServiceInvoiceItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SupplierServiceInvoiceItem::class,  'CSI_id', );
+    }
+    public function SupplierServiceInvoiceTaxs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SupplierServiceInvoiceTax::class,  'CSI_id', );
+    }
 }

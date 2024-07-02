@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\ActivationStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +19,10 @@ return new class extends Migration
             $table->integer('count');
             $table->float('price');
             $table->float('total_items_cost');
-            $table->foreignId('CPI_id')->constrained('customer_service_invoices')->onDelete('cascade');
+            // $table->float('tax');
+            // $table->boolean('taxable')->default(ActivationStatusEnum::ACTIVE);
+            // $table->float('total_cost');
+            $table->foreignId('CSI_id')->constrained('customer_service_invoices')->onDelete('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->timestamps();
         });

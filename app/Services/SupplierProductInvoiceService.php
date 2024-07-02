@@ -67,16 +67,16 @@ class SupplierProductInvoiceService extends BaseService
     private function refreshInvoice(supplierProductInvoice $invoice)
     {
         $totalProductsCost = $invoice->supplierProductInvoiceItems()->sum('total_items_cost');
-        $totalInvoice = $totalProductsCost;
         $totalTaxes = $invoice->supplierProductInvoiceTaxs()->get();
+        $taxes = 0;
         foreach($totalTaxes as $tax)
         {
             if($tax->value_type == "amount")
-                $totalInvoice = $totalInvoice + $tax->value;
+                $taxes += $tax->value;
             else
-                $totalInvoice = $totalInvoice + $totalInvoice * ($tax->value/100);
+                $taxes += $totalProductsCost * ($tax->value/100);
         }
-        $invoice->total_invoice = $totalInvoice;
+        $invoice->total_invoice = $totalProductsCost + $taxes;
         $invoice->save();
         $invoice->refresh();
     }
