@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\SupplierProductInvoiceService;
 use App\DataTables\SupplierProductInvoicesDataTable;
+use App\DTO\SupplierProductInvoice\SupplierProductInvoiceDTO;
 use App\Http\Requests\StoreSupplierProductInvoiceRequest;
 use App\Http\Requests\UpdateSupplierProductInvoiceRequest;
 
@@ -24,7 +25,7 @@ class SupplierProductInvoiceController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.supplier_service_invoices.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.supplier_product_invoices.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -49,11 +50,11 @@ class SupplierProductInvoiceController extends Controller
     {
         // userCan(request: $request, permission: 'create_site');
         try {
-            $this->supplierProductInvoiceService->store(data: $request->validated());
+            $supplierProductInvoiceDTO = SupplierProductInvoiceDTO::fromRequest($request);
+            $this->supplierProductInvoiceService->store(DTO: $supplierProductInvoiceDTO);
             return redirect()->route('supplier_product_invoices.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
-            dd($e);
-            return redirect()->back()->with('message', $e->getMessage());
+            return apiResponse(message: $e->getMessage(), code: 422);
         }
     }//end of store
 

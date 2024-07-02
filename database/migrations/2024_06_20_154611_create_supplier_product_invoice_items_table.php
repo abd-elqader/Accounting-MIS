@@ -8,14 +8,16 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('supplier_product_invoice_items', function (Blueprint $table) {
             $table->id();
-            $table->string('count');
-            $table->string('price');
-            $table->string('total_items_cost');
+            $table->integer('count');
+            $table->float('price');
+            $table->float('total_items_cost');
             $table->foreignId('SPI_id')->constrained('supplier_product_invoices')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->timestamps();
@@ -24,8 +26,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('supplier_product_invoice_items');
     }

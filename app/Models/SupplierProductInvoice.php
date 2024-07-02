@@ -40,4 +40,14 @@ class SupplierProductInvoice extends Model
 
 
     ##--------------------------------- CUSTOM FUNCTIONS
+
+
+    public function SupplierProductInvoiceItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SupplierProductInvoiceItem::class,  'SPI_id', );
+    }
+    public function SupplierProductInvoiceTaxs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SupplierProductInvoiceTax::class,  'SPI_id', );
+    }
 }

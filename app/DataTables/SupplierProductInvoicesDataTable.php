@@ -3,11 +3,11 @@
 namespace App\DataTables;
 
 use Yajra\DataTables\Html\Column;
-use App\Models\SupplierProductInvoice;
+use App\Models\supplierProductInvoice;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
-use App\Services\SupplierProductInvoiceService;
-use App\Services\SupplierServiceInvoiceService;
+use App\Services\supplierProductInvoiceService;
+use App\Services\supplierServiceInvoiceService;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
@@ -67,7 +67,7 @@ class SupplierProductInvoicesDataTable extends DataTable
             Column::make('total_invoice')->title(__('app.total_invoice')),
             Column::make('reversed')->title(__('app.reversed')),
             Column::make('due_date')->title(__('app.due_date')),
-            Column::make('creation_date')->title(__('app.creation_date')),
+            Column::make('created_at')->title(__('app.creation_date')),
             Column::make('supplier_id')->title(__('app.supplier_id')),
             Column::computed('action')
                 ->title(__('app.actions'))
@@ -83,6 +83,6 @@ class SupplierProductInvoicesDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Suppliers_' . date('YmdHis');
+        return 'suppliers_' . date('YmdHis');
     }
 }

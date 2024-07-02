@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_service_invoice_taxes');
+        Schema::dropIfExists('customer_product_invoice_taxes');
     }
 };

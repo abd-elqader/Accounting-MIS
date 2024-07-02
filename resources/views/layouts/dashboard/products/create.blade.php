@@ -155,6 +155,9 @@
     <!-- End Row -->
 @endsection
 
+
+@section('script')
+<!-- start unit prices html -->
 <div id="unit_price" style="display: none !important">
     <div class="mb-3 unit-price">
         <div class="card">
@@ -185,7 +188,7 @@
         </div>
     </div>
 </div>
-@section('script')
+<!-- end unit prices html -->
 <script>
     $(document).ready(function(){
         $('#add-product-unit-price').click(function(){
