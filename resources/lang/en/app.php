@@ -203,6 +203,16 @@ return [
     'company_id' => 'Company ID',
     'parent_id_not_in' => 'Parent ID is the same',
 
+    // Branch Addresses
+    'branch_addresses_page_title' => 'Branch Addresses',
+    'branch_addresses' => 'Branch Addresses',
+    'add_branch_addresses' => 'Add Branch Address',
+    'all_branch_addresses' => 'All Branch Addresses',
+    'type' => 'Type',
+    'postal_code' => 'Postal Code',
+    'description' => 'Description',
+    'branch_id' => 'Branch ID',
+
     // Company
     'company' => 'Company',
     'companies_page_title' => 'Companies',

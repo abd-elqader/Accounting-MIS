@@ -16,6 +16,7 @@ use App\Http\Controllers\Web\CustomerController;
 use App\Http\Controllers\Web\IndustryController;
 use App\Http\Controllers\Web\SupplierController;
 use App\Http\Controllers\Web\DepartmentController;
+use App\Http\Controllers\Web\BranchAddressController;
 use App\Http\Controllers\Web\CustomerAddressController;
 use App\Http\Controllers\Web\CustomerContactController;
 use App\Http\Controllers\Web\SupplierContactController;
@@ -90,6 +91,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
 
     // start branch
     Route::resource('branches', BranchController::class);
+    Route::resource('branch_addresses', BranchAddressController::class);
     
     // end branch
 });
