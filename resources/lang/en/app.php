@@ -192,7 +192,28 @@ return [
     'supplier_contact' => 'Supplier Contact',
     'add_supplier_contact' => 'Add Supplier Contact',
     'contact' => 'Contact',
+    
+    // Branch
+    'branches_page_title' => 'Branches',
+    'branches' => 'Branches',
+    'add_branch' => 'Add Branch',
+    'show_branch' => 'Show Branch',
+    'all_branches' => 'All Branches',
+    'parent_id' => 'Parent ID',
+    'company_id' => 'Company ID',
+    'parent_id_not_in' => 'Parent ID is the same',
 
+    // Company
+    'company' => 'Company',
+    'companies_page_title' => 'Companies',
+    'companies' => 'Companies',
+    'add_company' => 'Add Company',
+    'show_company' => 'Show Company',
+    'all_companies' => 'All Companies',
+    'start_of_finanicail_year' => 'Start Of Finanicail Year ',
+    'end_of_financial_year' => 'End Of Financial Year',
+    'commercial_register' => 'Commercial Register',
+    'logo' => 'Logo',
 
     // Supplier Addresses
     'supplierAddresses_page_title' => 'Supplier Addresses',

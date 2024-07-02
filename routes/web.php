@@ -3,7 +3,10 @@
 use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard\Customer;
+use App\Http\Controllers\Web\TaxController;
 use App\Http\Livewire\Dashboard\Switcherpage;
+use App\Http\Controllers\Web\BranchController;
+use App\Http\Controllers\Web\CompanyController;
 use App\Http\Controllers\Web\CountryController;
 use App\Http\Controllers\Web\ProductController;
 use App\Http\Controllers\Web\ServiceController;
@@ -27,7 +30,6 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 use App\Http\Controllers\Web\CustomerServiceInvoiceItemController;
 use App\Http\Controllers\Web\SupplierProductInvoiceItemController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceItemController;
-use App\Http\Controllers\Web\TaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +58,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     });
     Route::resource('currencies', CurrencyController::class);
     Route::resource('countries', CountryController::class);
+    Route::resource('companies', CompanyController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('industries', IndustryController::class);
     Route::resource('categories', CategoryController::class);
@@ -84,7 +87,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     // end customers
     
     Route::resource('taxes', TaxController::class);
+
+    // start branch
+    Route::resource('branches', BranchController::class);
     
+    // end branch
 });
 
 
