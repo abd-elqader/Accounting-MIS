@@ -15,15 +15,15 @@
             <form id="product_form" action="{{ route('products.store') }}" method="post">
                 <div class="card">
                     <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
+                        {{-- @if ($errors->any()) --}}
+                            <div class="alert alert-danger errors" style="display: none">
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
+                        {{-- @endif --}}
                         @csrf
                         <div class="row row-sm mb-4">
                             <div class="col-lg-4">
@@ -165,7 +165,7 @@
                 {{-- start update form --}}
                 <div class="row mb-3 g-3">
                     <div class="col-lg-4">
-                        <label>{{ __('lang.price') }} *</label>
+                        <label>{{ __('app.price') }} *</label>
                         <input type="text" name="unit_prices_price[]" class="form-control">
                         @error("unit_prices[0].price")
                             <span class="error">{{ $message }}</span>
@@ -216,13 +216,15 @@
                     $(".alert_message").fadeIn().delay(2000).fadeOut();
                     $(location).attr('href', "{{ route('products.index') }}");
                 },
-                error: function(data_error, exception){
+                error: function(data_error, exception) {
                     $(".load_content").hide();
                     if(exception == "error"){
                         $(".errors ul").text("");
+                        console.log($(".errors ul"));
                         $.each(data_error.responseJSON.errors, function(key, value) {
                             $(".errors ul").append("<li>" + key + ": " + value + "</li>");
                         });
+                        $('.errors').show();
                     }
                 }
             });

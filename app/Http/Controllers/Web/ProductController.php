@@ -10,6 +10,7 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Requests\Web\SiteStoreRequest;
 use App\Http\Requests\Web\SiteUpdateRequest;
+use App\Models\ProductUnitPrice;
 use App\Services\ProductService;
 use App\Services\SiteService;
 use Exception;
@@ -34,8 +35,9 @@ class ProductController extends Controller
     {
         // userCan(request: $request, permission: 'edit_site');
         try{
-            $site = $this->productService->findById(id: $id);
-            return view('Dashboard.products.edit', compact('site'));
+            $unit_prices = $this->productService->unitPrices($id);
+            $product = $this->productService->findById(id: $id);
+            return view('layouts.Dashboard.products.edit', compact('product','unit_prices'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
@@ -87,8 +89,9 @@ class ProductController extends Controller
     {
         // userCan(request: $request, permission: 'view_site');
         try{
-            $currrency = $this->productService->findById(id: $id);
-            return view('layouts.dashboard.products.show', compact('product'));
+            $unit_prices = $this->productService->unitPrices($id);
+            $product = $this->productService->findById(id: $id);
+            return view('layouts.dashboard.products.show', compact('product','unit_prices'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }

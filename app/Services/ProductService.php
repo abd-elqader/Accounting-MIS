@@ -5,13 +5,18 @@ namespace App\Services;
 use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
 use App\Models\Product;
+use App\Models\ProductUnitPrice;
 use Illuminate\Database\Eloquent\Builder;
 use App\QueryFilters\ProductFilters;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductService extends BaseService
 {
-    public function __construct(private Product $model){
+    public function __construct(
+        private Product $model,
+        private ProductUnitPrice $productUnitPrice
+    
+    ){
 
     }
 
@@ -66,6 +71,7 @@ class ProductService extends BaseService
     {
         $product = $this->findById($id);
         // $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
+        $data['taxable'] = !isset($data['taxable']) ? ActivationStatusEnum::NOT_ACTIVE:ActivationStatusEnum::ACTIVE;
         $product->update($data);
         $productUnitPricesData = $this->prepareUnitPricesData(data: $data);
         $product->unitPrices()->delete();
@@ -90,5 +96,13 @@ class ProductService extends BaseService
         return $product->save();
 
     }//end of status
+
+    public function unitPrices($id)
+    {
+        $product = $this->productUnitPrice
+            ->where('product_id', $id)->get();
+            
+        return $product;
+    }
 
 }

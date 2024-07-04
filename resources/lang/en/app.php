@@ -225,6 +225,14 @@ return [
     'commercial_register' => 'Commercial Register',
     'logo' => 'Logo',
 
+    // Categories
+
+    'categories_page_title' => 'Categories',
+    'categories' => 'Categories',
+    'add_category' => 'Add Category',
+    'show_category' => 'Show Category',
+    'all_categories' => 'All Categories',
+
     // Supplier Addresses
     'supplierAddresses_page_title' => 'Supplier Addresses',
     'supplier_addresses' => 'Supplier Addresses',
