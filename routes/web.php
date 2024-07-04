@@ -53,11 +53,11 @@ Route::group(['prefix' => 'authentication', 'middleware' => 'guest'], function (
     // Route::post('login', [AuthController::class, 'login'])->name('signin');
 });
 
+Route::get('/', function () {
+    return view('livewire.index');
+});
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
-    Route::get('/', function () {
-        return view('livewire.index');
-    });
     Route::resource('currencies', CurrencyController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('companies', CompanyController::class);
