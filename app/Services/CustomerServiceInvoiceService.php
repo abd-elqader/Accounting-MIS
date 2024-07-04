@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\DTO\CustomerServiceInvoice\CustomerServiceInvoiceDTO;
 use App\Exceptions\NotFoundException;
-use App\Models\customerServiceInvoice;
+use App\Models\CustomerServiceInvoice;
 use App\Models\Service;
 use App\Models\Tax;
 use Illuminate\Database\Eloquent\Model;

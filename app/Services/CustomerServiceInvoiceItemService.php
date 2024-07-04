@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\customerServiceInvoiceItem;
+use App\Models\CustomerServiceInvoiceItem;
 use App\QueryFilters\customerServiceInvoiceItemFilters;
 
 class CustomerServiceInvoiceItemService extends BaseService
