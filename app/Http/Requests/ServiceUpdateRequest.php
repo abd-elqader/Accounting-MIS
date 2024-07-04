@@ -33,8 +33,8 @@ class ServiceUpdateRequest extends FormRequest
             'weekly_income' => 'required|numeric',
             'monthly_income' => 'required|numeric',
             'yearly_income' => 'required|numeric',
-            'category_id' => 'required|integer|exists:categories,id',
-            'department_id' => 'required|integer|exists:departments,id',
+            // 'category_id' => 'required|integer|exists:categories,id',
+            // 'department_id' => 'required|integer|exists:departments,id',
 
             'unit_prices_price'=>'nullable|array',
             'unit_prices_price.*'=>'required|numeric',

@@ -38,7 +38,7 @@
                             <label class="form-control">{{ $customerProductInvoice->creation_date }}</label>
                         </div>
                         <div class="col-lg">
-                            <div class="main-content-label mg-b-5">@lang('app.creation_date')</div>
+                            <div class="main-content-label mg-b-5">@lang('app.customer_id')</div>
                             <label class="form-control">{{ $customerProductInvoice->customer_id }}</label>
                         </div>
                     </div>

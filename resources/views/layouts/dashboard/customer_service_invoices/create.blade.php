@@ -15,7 +15,7 @@
             <form id="invoice_form" action="{{ route('customer_service_invoices.store') }}" method="post">
                 <div class="card">
                     <div class="card-body">
-                        <div class="errors alert alert-danger">
+                        <div class="errors alert alert-danger" style="display: none">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -63,11 +63,11 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-0 mt-3 justify-content-end">
-                            <div>
-                            <a role="button" href="{{ route('customers.create') }}" class="btn btn-primary"><i
-                            class="fa fa-plus pe-2"></i>@lang('app.add_customer')</a>
+                                <div>
+                                <a role="button" href="{{ route('customers.create') }}" class="btn btn-primary"><i
+                                class="fa fa-plus pe-2"></i>@lang('app.add_customer')</a>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>                    
                 </div>
@@ -143,14 +143,14 @@
                         @enderror
                     </div> -->
                     <!-- <div class="col-lg-4">
-                        <label>{{ __('lang.total_items_cost') }} *</label>
+                        <label>{{ __('app.total_items_cost') }} *</label>
                         <input type="text" name="total_items_cost[]" class="form-control">
                         @error("invoice_items[0].total_items_cost")
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div> -->
                     <div class="col-lg">
-                        <label>{{ __('lang.count') }} *</label>
+                        <label>{{ __('app.count') }} *</label>
                         <input type="text" name="invoice_items_count[]" class="form-control">
                         @error("invoice_items[0].count")
                             <span class="error">{{ $message }}</span>
@@ -255,6 +255,7 @@
         });
         $('#invoice_submit_button').click(function(e){
             e.preventDefault();
+            
             var url = $('#invoice_form').attr("action");
             var data = $('#invoice_form').serialize();
             $.ajax({
@@ -265,20 +266,23 @@
                     $(".load_content").show();
                 },
                 success:function(responsetext){
-                    $(".load_content").hide();
-                    $(".alert_message").text('{{ __("lang.success_operation") }}');
-                    $(".alert_message").fadeIn().delay(2000).fadeOut();
+                    // $('.alert_message').removeClass('alert-danger').addClass('alert-success');
+                    // $(".load_content").hide();
+                    // $(".alert_message").text('{{ __("app.success_operation") }}');
+                    // $(".alert_message").fadeIn().delay(2000).fadeOut();
                     $(location).attr('href', "{{ route('customer_service_invoices.index') }}");
                 },
                 error: function(data_error, exception){
                     $(".load_content").hide();
                     if(exception == "error"){
+                        $('.alert_message').removeClass('alert-success').addClass('alert-danger');
                         $(".alert_message").text(data_error.responseJSON.message);
                         $(".alert_message").fadeIn().delay(2000).fadeOut();
                         $(".errors ul").text("");
                         $.each(data_error.responseJSON.errors, function(key, value) {
                             $(".errors ul").append("<li>" + key + ": " + value + "</li>");
                         });
+                        $(".errors").show();
                     }
                 }
             });

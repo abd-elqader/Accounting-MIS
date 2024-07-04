@@ -21,6 +21,8 @@ return [
     'customer_id' => 'Customer ID',
     'supplier_id' => 'Supplier ID',
     'service_id' => 'Service ID',
+    'search' => 'Search',
+    'print' => 'Print',
     'phone' => 'Phone',
     'email' => 'Email',
     'home' => 'Home',
@@ -33,15 +35,11 @@ return [
     'not_found' => 'Not Found',
     'something_went_wrong' => 'Something went wrong',
     'success_operation' => 'Success Operation',
-    
-
-
 
     // login
     'sign_in' => 'Sign In',
     'password' => 'Password',
     'email_or_phone' => 'Email or Phone',
-
 
     // Country
     'countries_page_title' => 'Countries',
@@ -61,6 +59,7 @@ return [
     'services_page_title' => 'Services',
     'services' => 'Services',
     'add_service' => 'Add Service',
+    'all_services' => 'All Services',
     'brand' => 'Brand',
     'tax' => 'Tax',
     'stock' => 'Stock',
@@ -77,7 +76,7 @@ return [
     'customers_page_title' => 'Customers',
     'customers' => 'Customers',
     'add_customer' => 'Add Customer',
-
+    
     'customer_contact_page_title' => 'Customer Contacts',
 
     // Customer Contacts
@@ -99,11 +98,18 @@ return [
 
     // Customer Products Invoices
     'customer_product_invoices_page_title' => 'Customer Product Invoices',
+    'customer_product_invoice_page_title' => 'Customer Product Invoice',
     'add_customer_product_invoice' => 'Add Customer Product Invoice',
+    'edit_customer_product_invoice' => 'Edit Customer Product Invoice',
     'customer_product_invoice' => 'Customer Product Invoice',
     'customer_product_invoices' => 'Customer Product Invoices',
     'all_customer_product_invoices' => 'All Customer Product Invoices',
 
+    // Customer Service Invoices
+    'customer_service_invoices_page_title' => 'Customer Service Invoices',
+    'customer_service_invoice' => 'Customer Service Invoice',
+    'add_customer_service_invoice' => 'Add Customer Service Invoice',
+    
 
     // Customer Service Invoices Taxes
     'customer_service_invoice_taxes_page_title' => 'Customer Service Invoice Taxes',
@@ -140,6 +146,18 @@ return [
     'taxable' => 'Taxable',
     'tax_number' => 'Tax Number',
 
+    // Tax page 
+
+    'taxes_page_title' => 'Taxes',
+    'taxes' => 'Taxes',
+    'all_taxes' => 'All Taxes',
+    'taxes_page_title' => 'Taxes',
+    'add_tax' => 'Add Tax',
+
+    'value_type' => 'Value Type',
+    'percentage' => 'Percentage',
+    'amount' => 'amount',
+
     // Supplier Service Invoices
     'supplier_service_invoices_page_title' => 'Supplier Service Invoices',
     'supplier_service_invoice' => 'Supplier Service Invoice',
@@ -161,6 +179,8 @@ return [
     'supplier_product_invoices_page_title' => 'Supplier Product Invoices',
     'supplier_product_invoice' => 'Supplier Product Invoice',
     'add_supplier_product_invoice' => 'Add Supplier Product Invoice',
+    'add_invoice_item' => 'Add Invoice Item',
+    'add_invoice_tax' => 'Add Invoice Tax',
 
     // Supplier Product Invoices Tax
     'supplier_product_invoice_taxes_page_title' => 'Supplier Product Invoice Taxes',

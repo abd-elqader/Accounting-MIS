@@ -52,9 +52,13 @@ class CustomerProductInvoiceController extends Controller
         try {
             $customerProductInvoiceDTO = CustomerProductInvoiceDTO::fromRequest($request);
             $this->customerProductInvoiceService->store(DTO: $customerProductInvoiceDTO);
-            return redirect()->route('customer_product_invoices.index')->with('message', __('app.success_operation'));
+            session()->flash('message', __('app.success_operation'));
+            return response()->json(['message' => __('app.success_operation')], 200); // HTTP 200 OK
+            // return redirect()->route('customer_product_invoices.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
-            return apiResponse(message: $e->getMessage(), code: 422);
+            session()->flash('error', __('app.error_operation'));
+            return response()->json(['message' => __('app.error_operation')], 422); // HTTP 422 Unprocessable Entity
+            // return apiResponse(message: $e->getMessage(), code: 422);
         }
     }//end of store
 

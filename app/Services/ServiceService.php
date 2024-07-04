@@ -2,16 +2,20 @@
 
 namespace App\Services;
 
-use App\Enum\ActivationStatusEnum;
-use App\Exceptions\NotFoundException;
 use App\Models\Service;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\ServiceUnitPrice;
+use App\Enum\ActivationStatusEnum;
 use App\QueryFilters\ServiceFilters;
+use App\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class ServiceService extends BaseService
 {
-    public function __construct(private Service $model){
+    public function __construct(
+        private Service $model,
+        private ServiceUnitPrice $ServiceUnitPrice
+        ){
 
     }
 
@@ -91,4 +95,11 @@ class ServiceService extends BaseService
 
     }//end of status
 
+    public function unitPrices($id)
+    {
+        $product = $this->ServiceUnitPrice
+            ->where('service_id', $id)->get();
+            
+        return $product;
+    }
 }

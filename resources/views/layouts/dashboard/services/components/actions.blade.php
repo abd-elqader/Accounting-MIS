@@ -4,13 +4,13 @@
     </button>
     <div class="dropdown-menu">
         
-            <a href="{{route('products.show',$model->id)}}" class="dropdown-item">@lang('app.show')</a>
+            <a href="{{route('services.show',$model->id)}}" class="dropdown-item">@lang('app.show')</a>
         
 
-            <a href="{{route('products.edit',$model->id)}}" class="dropdown-item">@lang('app.edit')</a>
+            <a href="{{route('services.edit',$model->id)}}" class="dropdown-item">@lang('app.edit')</a>
         
 
-            <button name="delete" data-href="{{route('products.destroy', $model->id)}}" role="button" class="dropdown-item">@lang('app.delete')</button>
+            <button name="delete" data-href="{{route('services.destroy', $model->id)}}" role="button" class="dropdown-item">@lang('app.delete')</button>
         
     </div>
 </div>

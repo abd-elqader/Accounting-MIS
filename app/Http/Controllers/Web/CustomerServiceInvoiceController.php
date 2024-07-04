@@ -52,9 +52,14 @@ class CustomerServiceInvoiceController extends Controller
         try {
             $customerServiceInvoiceDTO = CustomerServiceInvoiceDTO::fromRequest($request);
             $this->customerServiceInvoiceService->store(DTO: $customerServiceInvoiceDTO);
-            return redirect()->route('customer_service_invoices.index')->with('message', __('app.success_operation'));
+            session()->flash('message', __('app.success_operation'));
+            return response()->json(['message' => __('app.success_operation')], 200); // HTTP 200 OK
+            // return redirect()->route('customer_service_invoices.index')->with('message', __('app.success_operation'));
         } catch (Exception $e) {
-            return apiResponse(message: $e->getMessage(), code: 422);
+            dd($e);
+            session()->flash('message', __('app.success_operation'));
+            return response()->json(['message' => __('app.error_operation')], 422); // HTTP 422 Unprocessable Entity
+            // return apiResponse(message: $e->getMessage(), code: 422);
         }
     }//end of store
 
@@ -89,7 +94,6 @@ class CustomerServiceInvoiceController extends Controller
             $customerServiceInvoice = $this->customerServiceInvoiceService->findById(id: $id);
             return view('layouts.dashboard.customer_service_invoices.show', compact('customerServiceInvoice'));
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
     } //end of show

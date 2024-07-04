@@ -3,9 +3,9 @@
 @section('content')
     {{--    breadcrumb --}}
     @include('layouts.dashboard.components.breadcrumb', [
-        'title' => trans('app.countries_page_title'),
-        'first_list_item' => trans('app.countries'),
-        'last_list_item' => trans('app.add_country'),
+        'title' => trans('app.taxes_page_title'),
+        'first_list_item' => trans('app.taxes'),
+        'last_list_item' => trans('app.add_tax'),
     ])
     {{--    end breadcrumb --}}
 
