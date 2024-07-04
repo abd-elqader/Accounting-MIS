@@ -3,7 +3,7 @@
 namespace App\DataTables;
 
 use Yajra\DataTables\Html\Column;
-use App\Models\customerProductInvoice;
+use App\Models\CustomerProductInvoice;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 use App\Services\customerProductInvoiceService;
