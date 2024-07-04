@@ -28,7 +28,7 @@ class ProductController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.products.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.products.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -37,7 +37,7 @@ class ProductController extends Controller
         try{
             $unit_prices = $this->productService->unitPrices($id);
             $product = $this->productService->findById(id: $id);
-            return view('layouts.Dashboard.products.edit', compact('product','unit_prices'));
+            return view('layouts.dashboard.products.edit', compact('product','unit_prices'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }

@@ -27,7 +27,7 @@ class CurrencyController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.currencies.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.currencies.index');
     }//end of index
 
     public function edit(Request $request, $id)

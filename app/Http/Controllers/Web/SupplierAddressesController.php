@@ -27,7 +27,7 @@ class SupplierAddressesController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.supplier_addresses.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.supplier_addresses.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -35,7 +35,7 @@ class SupplierAddressesController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $supplier_address = $this->supplierAddressesService->findById(id: $id);
-            return view('layouts.Dashboard.supplier_addresses.edit', compact('supplier_address'));
+            return view('layouts.dashboard.supplier_addresses.edit', compact('supplier_address'));
         }catch(Exception $e){
             dd($e);
             return redirect()->back()->with("message", __('app.something_went_wrong'));

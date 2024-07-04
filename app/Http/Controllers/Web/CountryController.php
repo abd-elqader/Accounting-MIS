@@ -27,7 +27,7 @@ class CountryController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.countries.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.countries.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -35,7 +35,7 @@ class CountryController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $country = $this->countryService->findById(id: $id);
-            return view('layouts.Dashboard.countries.edit', compact('country'));
+            return view('layouts.dashboard.countries.edit', compact('country'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }

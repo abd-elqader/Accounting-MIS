@@ -25,7 +25,7 @@ class BranchAddressController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.branch_addresses.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.branch_addresses.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -33,7 +33,7 @@ class BranchAddressController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $branch_address = $this->branchAddressService->findById(id: $id);
-            return view('layouts.Dashboard.branch_addresses.edit', compact('branch_address'));
+            return view('layouts.dashboard.branch_addresses.edit', compact('branch_address'));
         }catch(Exception $e){
             dd($e);
             return redirect()->back()->with("message", __('app.something_went_wrong'));

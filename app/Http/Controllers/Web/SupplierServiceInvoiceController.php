@@ -25,7 +25,7 @@ class SupplierServiceInvoiceController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.supplier_service_invoices.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.supplier_service_invoices.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -33,7 +33,7 @@ class SupplierServiceInvoiceController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $supplierServiceInvoice = $this->supplierServiceInvoiceService->findById(id: $id);
-            return view('layouts.Dashboard.supplier_service_invoices.edit', compact('supplierServiceInvoice'));
+            return view('layouts.dashboard.supplier_service_invoices.edit', compact('supplierServiceInvoice'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }

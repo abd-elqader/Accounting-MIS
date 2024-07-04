@@ -23,7 +23,7 @@ class CustomerServiceInvoiceTaxController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.customer_service_invoice_taxes.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.customer_service_invoice_taxes.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -31,7 +31,7 @@ class CustomerServiceInvoiceTaxController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $customerServiceInvoiceTax = $this->customerServiceInvoiceTaxService->findById(id: $id);
-            return view('layouts.Dashboard.customer_service_invoice_taxes.edit', compact('customerServiceInvoiceTax'));
+            return view('layouts.dashboard.customer_service_invoice_taxes.edit', compact('customerServiceInvoiceTax'));
         }catch(Exception $e){
             dd($e);
             return redirect()->back()->with("message", __('app.something_went_wrong'));

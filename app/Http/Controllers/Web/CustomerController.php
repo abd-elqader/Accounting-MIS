@@ -27,7 +27,7 @@ class CustomerController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.customers.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.customers.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -35,7 +35,7 @@ class CustomerController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $customer = $this->customerService->findById(id: $id);
-            return view('layouts.Dashboard.customers.edit', compact('customer'));
+            return view('layouts.dashboard.customers.edit', compact('customer'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }

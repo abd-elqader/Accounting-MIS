@@ -27,7 +27,7 @@ class IndustryController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.industries.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.industries.index');
     }//end of index
 
     public function edit(Request $request, $id)

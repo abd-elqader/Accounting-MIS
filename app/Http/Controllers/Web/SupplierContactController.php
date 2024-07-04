@@ -30,7 +30,7 @@ class SupplierContactController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.supplier_contacts.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.supplier_contacts.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -38,7 +38,7 @@ class SupplierContactController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $supplier_contact = $this->supplierContactService->findById(id: $id);
-            return view('layouts.Dashboard.supplier_contacts.edit', compact('supplier_contact'));
+            return view('layouts.dashboard.supplier_contacts.edit', compact('supplier_contact'));
         }catch(Exception $e){
             dd($e);
             return redirect()->back()->with("message", __('app.something_went_wrong'));

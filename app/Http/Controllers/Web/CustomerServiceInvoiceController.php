@@ -25,7 +25,7 @@ class CustomerServiceInvoiceController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.customer_service_invoices.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.customer_service_invoices.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -33,7 +33,7 @@ class CustomerServiceInvoiceController extends Controller
         // userCan(request: $request, permission: 'edit_site');
         try{
             $customerServiceInvoice = $this->customerServiceInvoiceService->findById(id: $id);
-            return view('layouts.Dashboard.customer_service_invoices.edit', compact('customerServiceInvoice'));
+            return view('layouts.dashboard.customer_service_invoices.edit', compact('customerServiceInvoice'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }

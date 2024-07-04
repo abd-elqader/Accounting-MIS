@@ -27,7 +27,7 @@ class DepartmentController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
-        return $dataTable->with(['filters'=>$filters])->render('layouts.Dashboard.departments.index');
+        return $dataTable->with(['filters'=>$filters])->render('layouts.dashboard.departments.index');
     }//end of index
 
     public function edit(Request $request, $id)
