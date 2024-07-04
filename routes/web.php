@@ -53,6 +53,7 @@ Route::group(['prefix' => 'authentication', 'middleware' => 'guest'], function (
     // Route::post('login', [AuthController::class, 'login'])->name('signin');
 });
 
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::get('/', function () {
         return view('livewire.index');
