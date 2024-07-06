@@ -31,6 +31,7 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceTaxController;
 use App\Http\Controllers\Web\CustomerServiceInvoiceItemController;
 use App\Http\Controllers\Web\SupplierProductInvoiceItemController;
 use App\Http\Controllers\Web\SupplierServiceInvoiceItemController;
+use App\Http\Controllers\Web\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,16 +49,16 @@ use App\Http\Controllers\Web\SupplierServiceInvoiceItemController;
 // })->name('home');
 
 Route::group(['prefix' => 'authentication', 'middleware' => 'guest'], function () {
-    Route::view('login', 'layouts.dashboard.auth.login')->name('login');
-    // Route::get('login', [AuthController::class, 'loginForm'])->name('login');
-    // Route::post('login', [AuthController::class, 'login'])->name('signin');
+    Route::view('login', 'layouts.dashboard.auth.login')->name('loginView');
+    Route::post('login', [AuthController::class, 'login'])->name('login');
 });
 
 Route::get('/', function () {
     return view('livewire.index');
-});
+})->name('home');
 
-Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('currencies', CurrencyController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('companies', CompanyController::class);
@@ -71,29 +72,23 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'guest'], function () {
     Route::resource('supplier_addresses', SupplierAddressesController::class);
     Route::resource('supplier_contacts', SupplierContactController::class);
     Route::resource('supplier_service_invoices', SupplierServiceInvoiceController::class);
-    Route::resource('supplier_service_invoice_taxes', SupplierServiceInvoiceTaxController::class);
-    Route::resource('supplier_service_invoice_items', SupplierServiceInvoiceItemController::class);
     Route::resource('supplier_product_invoices', SupplierProductInvoiceController::class);
-    Route::resource('supplier_product_invoice_taxes', SupplierProductInvoiceTaxController::class);
-    Route::resource('supplier_product_invoice_items', SupplierProductInvoiceItemController::class);
     // end suppliers
-    
+
     // start customers
     Route::resource('customers', CustomerController::class);
     Route::resource('customer_addresses', CustomerAddressController::class);
     Route::resource('customer_contacts', CustomerContactController::class);
     Route::resource('customer_service_invoices', CustomerServiceInvoiceController::class);
-    Route::resource('customer_service_invoice_taxes', CustomerServiceInvoiceTaxController::class);
-    Route::resource('customer_service_invoice_items', CustomerServiceInvoiceItemController::class);
     Route::resource('customer_product_invoices', CustomerProductInvoiceController::class);
     // end customers
-    
+
     Route::resource('taxes', TaxController::class);
 
     // start branch
     Route::resource('branches', BranchController::class);
     Route::resource('branch_addresses', BranchAddressController::class);
-    
+
     // end branch
 });
 
