@@ -55,9 +55,11 @@ Route::group(['prefix' => 'authentication', 'middleware' => 'guest'], function (
 
 Route::get('/', function () {
     return view('livewire.index');
-})->name('home');
+})->middleware('auth')->name('home');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+
+    
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('currencies', CurrencyController::class);
     Route::resource('countries', CountryController::class);
