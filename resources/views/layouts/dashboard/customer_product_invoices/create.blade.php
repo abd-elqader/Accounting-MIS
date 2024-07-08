@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <!-- start invoice items -->
                 <div class="card">
@@ -94,7 +94,7 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3  invoice_taxs">
-                            
+
                         </div>
                     </div>
                     <div class="card-footer mt-4">
@@ -113,7 +113,7 @@
                 </div>
                  <!-- end invoice taxs -->
             </form>
-           
+
         </div>
     </div>
 
@@ -160,7 +160,7 @@
                         <button type="button" class="btn btn-danger remove_invoice_item"><i class="fa fa-trash"></i></button>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -178,7 +178,7 @@
                         @error('invoice_taxes[0].tax_id')
                             <div class="text-danger"> {{ $message }}</div>
                         @enderror
-                    </div>                    
+                    </div>
                 </div>
                 <div class="row mb-3 g-3">
                     <div class="invoice_taxs_buttons">
@@ -266,9 +266,9 @@
                 },
                 success:function(responsetext){
                     $(".load_content").hide();
-                    $(".alert_message").text('{{ __("lang.success_operation") }}');
-                    $(".alert_message").fadeIn().delay(2000).fadeOut();
-                    $(location).attr('href', "{{ route('customer_product_invoices.index') }}");
+                    // $(".alert_message").text('{{ __("lang.success_operation") }}');
+                    // $(".alert_message").fadeIn().delay(2000).fadeOut();
+                    $(location).attr('href', "{{ redirect()->route('customer_product_invoices.index')->with('message', 'lang.success_operation') }}");
                 },
                 error: function(data_error, exception){
                     $(".load_content").hide();

@@ -17,28 +17,32 @@
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">Customers</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li class="side-menu__label1"><a href="javascript:void(0);">Customers</a></li>
-										<li><a class="slide-item" href="{{route('customers.create')}}">Create</a></li>
-										<li><a class="slide-item" href="{{route('customers.index')}}">View</a></li>
+										{{-- <li><a class="slide-item" href="{{route('customers.create')}}">Create</a></li> --}}
+										<li><a class="slide-item" href="{{route('customers.index')}}">Customers</a></li>
+										<li><a class="slide-item" href="{{route('customer_contacts.index')}}">Customer contacts</a></li>
+										<li><a class="slide-item" href="{{route('customer_addresses.index')}}">Customer addresses</a></li>
+										<li><a class="slide-item" href="{{route('customer_service_invoices.index')}}">Customer service invoice</a></li>
+										<li><a class="slide-item" href="{{route('customer_product_invoices.index')}}">Customer product invoice</a></li>
 									</ul>
 								</li>
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">customer contacts</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li class="side-menu__label1"><a href="javascript:void(0);">Customer contacts</a></li>
 										<li><a class="slide-item" href="{{route('customer_contacts.create')}}">Create</a></li>
 										<li><a class="slide-item" href="{{route('customer_contacts.index')}}">View</a></li>
 									</ul>
-								</li>
-								<li class="slide">
+								</li> --}}
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">customer addresses</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li class="side-menu__label1"><a href="javascript:void(0);">Customer addresses</a></li>
 										<li><a class="slide-item" href="{{route('customer_addresses.create')}}">Create</a></li>
 										<li><a class="slide-item" href="{{route('customer_addresses.index')}}">View</a></li>
 									</ul>
-								</li>
+								</li> --}}
 
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 										<svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24">
 											<path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
@@ -52,9 +56,9 @@
 										<li><a class="slide-item" href="{{route('customer_service_invoices.index')}}">View</a></li>
 
 									</ul>
-								</li>
+								</li> --}}
 
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 										<svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24">
 											<path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
@@ -68,18 +72,21 @@
 										<li><a class="slide-item" href="{{route('customer_product_invoices.index')}}">View</a></li>
 
 									</ul>
-								</li>
-								
+								</li> --}}
+
 								<li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">Suppliers</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li class="side-menu__label1"><a href="javascript:void(0);">Suppliers</a></li>
-										<li><a class="slide-item" href="{{route('suppliers.create')}}">Create</a></li>
-										<li><a class="slide-item" href="{{route('suppliers.index')}}">View</a></li>
-										<li><a class="slide-item" href="{{url('index1')}}">Supplier invoices</a></li>
+										{{-- <li><a class="slide-item" href="{{route('suppliers.create')}}">Create</a></li> --}}
+										<li><a class="slide-item" href="{{route('suppliers.index')}}">Suppliers</a></li>
+										<li><a class="slide-item" href="{{route('supplier_contacts.index')}}">Supplier contacts</a></li>
+										<li><a class="slide-item" href="{{route('supplier_addresses.index')}}">Supplier addresses</a></li>
+										<li><a class="slide-item" href="{{route('supplier_service_invoices.index')}}">Supplier service invoices</a></li>
+										<li><a class="slide-item" href="{{route('supplier_product_invoices.index')}}">Suppler product invoices</a></li>
 									</ul>
 								</li>
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 										<svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24">
 											<path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
@@ -91,11 +98,10 @@
 										<li class="side-menu__label1"><a href="javascript:void(0);">Supplier Addresses</a></li>
 										<li><a class="slide-item" href="{{route('supplier_addresses.create')}}">Create</a></li>
 										<li><a class="slide-item" href="{{route('supplier_addresses.index')}}">View</a></li>
-										<li><a class="slide-item" href="{{url('index1')}}">Supplier invoices</a></li>
 									</ul>
-								</li>
+								</li> --}}
 
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 										<svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24">
 											<path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
@@ -107,11 +113,10 @@
 										<li class="side-menu__label1"><a href="javascript:void(0);">Supplier Contacts</a></li>
 										<li><a class="slide-item" href="{{route('supplier_contacts.create')}}">Create</a></li>
 										<li><a class="slide-item" href="{{route('supplier_contacts.index')}}">View</a></li>
-										<li><a class="slide-item" href="{{url('index1')}}">Supplier invoices</a></li>
 									</ul>
-								</li>
-								
-								<li class="slide">
+								</li> --}}
+
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 										<svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24">
 											<path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
@@ -125,8 +130,8 @@
 										<li><a class="slide-item" href="{{route('supplier_service_invoices.index')}}">View</a></li>
 
 									</ul>
-								</li>
-								<li class="slide">
+								</li> --}}
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 										<svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24">
 											<path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
@@ -140,8 +145,8 @@
 										<li><a class="slide-item" href="{{route('supplier_product_invoices.index')}}">View</a></li>
 
 									</ul>
-								</li>
-							
+								</li> --}}
+
 								<li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">Products</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
@@ -194,19 +199,20 @@
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">Branches</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li class="side-menu__label1"><a href="javascript:void(0);">Branches</a></li>
-										<li><a class="slide-item" href="{{route('branches.create')}}">Create</a></li>
-										<li><a class="slide-item" href="{{route('branches.index')}}">View</a></li>
+										{{-- <li><a class="slide-item" href="{{route('branches.create')}}">Create</a></li> --}}
+										<li><a class="slide-item" href="{{route('branches.index')}}">Branches</a></li>
+										<li><a class="slide-item" href="{{route('branch_addresses.index')}}">Branch addresses</a></li>
 									</ul>
 								</li>
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">Branch Addresses</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li class="side-menu__label1"><a href="javascript:void(0);">Branch Addresses</a></li>
 										<li><a class="slide-item" href="{{route('branch_addresses.create')}}">Create</a></li>
 										<li><a class="slide-item" href="{{route('branch_addresses.index')}}">View</a></li>
 									</ul>
-								</li>
-								
+								</li> --}}
+
 								<li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"  class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/></svg><span class="side-menu__label">Departments</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
