@@ -34,8 +34,9 @@ class ServiceController extends Controller
     {
         // userCan(request: $request, permission: 'edit_site');
         try{
-            $site = $this->serviceService->findById(id: $id);
-            return view('Dashboard.services.edit', compact('site'));
+            $unit_prices = $this->serviceService->unitPrices($id);
+            $service = $this->serviceService->findById(id: $id);
+            return view('layouts.dashboard.services.edit', compact('service','unit_prices'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));
         }
@@ -87,7 +88,8 @@ class ServiceController extends Controller
     {
         // userCan(request: $request, permission: 'view_site');
         try{
-            $currrency = $this->serviceService->findById(id: $id);
+            $unit_prices = $this->serviceService->unitPrices($id);
+            $service = $this->serviceService->findById(id: $id);
             return view('layouts.dashboard.services.show', compact('service'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('app.something_went_wrong'));

@@ -24,7 +24,7 @@ class StorecustomerProductInvoiceRequest extends FormRequest
     {
         return [
             'due_date' => 'required|string',
-            'customer_id' => 'nullable|exists:customers,id',
+            'customer_id' => 'required|exists:customers,id',
             'currency_id' => 'required|exists:currencies,id',
 
             'invoice_items_product_id'=>'nullable|array',
@@ -35,7 +35,6 @@ class StorecustomerProductInvoiceRequest extends FormRequest
 
             'invoice_taxes_tax_id'=>'nullable|array',
             'invoice_taxes_tax_id.*'=>'required|integer|exists:taxes,id',
-
         ];
     }
 

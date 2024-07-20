@@ -24,7 +24,7 @@ class StorecustomerServiceInvoiceRequest extends FormRequest
     {
         return [
             'due_date' => 'required|string',
-            'customer_id' => 'nullable|exists:customers,id',
+            'customer_id' => 'required|exists:customers,id',
             'currency_id' => 'required|exists:currencies,id',
 
             'invoice_items_service_id'=>'nullable|array',

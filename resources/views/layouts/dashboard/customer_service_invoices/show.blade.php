@@ -17,29 +17,29 @@
                     <div class="row row-sm mb-4">
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.total_invoice')</div>
-                            <label class="form-control">{{ $customerProductInvoice->total_invoice }}</label>
+                            <label class="form-control">{{ $customerServiceInvoice->total_invoice }}</label>
                         </div>
                     </div>
 
                     <div class="row row-sm mb-4">
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.reversed')</div>
-                            <label class="form-control">{{ $customerProductInvoice->reversed }}</label>
+                            <label class="form-control">{{ $customerServiceInvoice->reversed }}</label>
                         </div>
 
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.due_date')</div>
-                            <label class="form-control">{{ $customerProductInvoice->due_date }}</label>
+                            <label class="form-control">{{ $customerServiceInvoice->due_date }}</label>
                         </div>
                     </div>
                     <div class="row row-sm mb-4">
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.creation_date')</div>
-                            <label class="form-control">{{ $customerProductInvoice->creation_date }}</label>
+                            <label class="form-control">{{ $customerServiceInvoice->creation_date }}</label>
                         </div>
                         <div class="col-lg">
                             <div class="main-content-label mg-b-5">@lang('app.creation_date')</div>
-                            <label class="form-control">{{ $customerProductInvoice->customer_id }}</label>
+                            <label class="form-control">{{ $customerServiceInvoice->customer_id }}</label>
                         </div>
                     </div>
                 </div>

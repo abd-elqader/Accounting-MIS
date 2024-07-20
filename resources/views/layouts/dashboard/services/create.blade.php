@@ -15,15 +15,15 @@
             <form id="service_form" action="{{ route('services.store') }}" method="post">
                 <div class="card">
                     <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        {{-- @if ($errors->any()) --}}
+                        <div class="alert alert-danger errors" style="display: none">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    {{-- @endif --}}
                         @csrf
                         <div class="row row-sm mb-4">
                             <div class="col-lg-4">
@@ -206,6 +206,7 @@
                         $.each(data_error.responseJSON.errors, function(key, value) {
                             $(".errors ul").append("<li>" + key + ": " + value + "</li>");
                         });
+                        $('.errors').show();
                     }
                 }
             });
@@ -216,3 +217,11 @@
 
 @endsection
 
+{{-- if(exception == "error"){
+    $(".errors ul").text("");
+    console.log($(".errors ul"));
+    $.each(data_error.responseJSON.errors, function(key, value) {
+        $(".errors ul").append("<li>" + key + ": " + value + "</li>");
+    });
+    $('.errors').show();
+} --}}

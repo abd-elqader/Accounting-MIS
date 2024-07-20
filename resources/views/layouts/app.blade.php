@@ -119,7 +119,7 @@
                         },
                         success:function(responsetext){
                             $(".load_content").hide();
-                            $(".alert_message").text('{{ __("lang.success_operation") }}');
+                            $(".alert_message").text('{{ __("app.success_operation") }}');
                             $(".alert_message").fadeIn().delay(2000).fadeOut();
                             $('.table-data').DataTable().ajax.reload(null, false);
                         },

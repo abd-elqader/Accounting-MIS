@@ -26,7 +26,7 @@ class UpdateCustomerProductInvoiceRequest extends FormRequest
             'reversed' => 'nullable|string',
             'due_date' => 'nullable|string',
             'creation_date' => 'nullable|string',
-            'customer_id' => 'nullable|exists:customers,id',
+            'customer_id' => 'required|exists:customers,id',
         ];
     }
 
