@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\DTO\CustomerProductInvoice\CustomerProductInvoiceDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorecustomerProductInvoiceRequest extends FormRequest
+class StoreCustomerProductInvoiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,7 @@ class StorecustomerProductInvoiceRequest extends FormRequest
 
             'invoice_items_product_id'=>'nullable|array',
             'invoice_items_product_id.*'=>'required|integer|exists:products,id',
-            
+
             'invoice_items_count'=>'nullable|array',
             'invoice_items_count.*'=>'required|integer|min:1',
 
