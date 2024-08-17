@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\supplierServiceInvoice;
+use App\Models\SupplierServiceInvoice;
 use Illuminate\Auth\Access\Response;
 
 class SupplierServiceInvoicePolicy
@@ -19,7 +19,7 @@ class SupplierServiceInvoicePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, supplierServiceInvoice $supplierServiceInvoice): bool
+    public function view(User $user, SupplierServiceInvoice $supplierServiceInvoice): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class SupplierServiceInvoicePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, supplierServiceInvoice $supplierServiceInvoice): bool
+    public function update(User $user, SupplierServiceInvoice $supplierServiceInvoice): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class SupplierServiceInvoicePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, supplierServiceInvoice $supplierServiceInvoice): bool
+    public function delete(User $user, SupplierServiceInvoice $supplierServiceInvoice): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class SupplierServiceInvoicePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, supplierServiceInvoice $supplierServiceInvoice): bool
+    public function restore(User $user, SupplierServiceInvoice $supplierServiceInvoice): bool
     {
         //
     }

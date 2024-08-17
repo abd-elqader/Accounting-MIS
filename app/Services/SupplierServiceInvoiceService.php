@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\DTO\SupplierServiceInvoice\SupplierServiceInvoiceDTO;
 use App\Exceptions\NotFoundException;
-use App\Models\supplierServiceInvoice;
+use App\Models\SupplierServiceInvoice;
 use App\Models\Service;
 use App\Models\Tax;
 use Illuminate\Database\Eloquent\Model;
@@ -64,7 +64,7 @@ class SupplierServiceInvoiceService extends BaseService
     } //end of store
 
 
-    private function refreshInvoice(supplierServiceInvoice $invoice)
+    private function refreshInvoice(SupplierServiceInvoice $invoice)
     {
         $totalServicesCost = $invoice->supplierServiceInvoiceItems()->sum('total_items_cost');
         $totalTaxes = $invoice->supplierServiceInvoiceTaxs()->get();

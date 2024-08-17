@@ -7,7 +7,7 @@ use App\Models\SupplierProductInvoice;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 use App\Services\supplierProductInvoiceService;
-use App\Services\supplierServiceInvoiceService;
+use App\Services\SupplierServiceInvoiceService;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
