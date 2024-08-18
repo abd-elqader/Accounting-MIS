@@ -21,6 +21,6 @@ class Industry extends Component
 
     public function render()
     {
-        return view('livewire.Dashboard.Industry');
+        return view('livewire.dashboard.Industry');
     }
 }
