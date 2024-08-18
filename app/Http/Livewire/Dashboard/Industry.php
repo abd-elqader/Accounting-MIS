@@ -13,7 +13,7 @@ class Industry extends Component
     public $field_name = 'industry_id';
 
     public $status = null;
-    
+
     public function mount()
     {
         $this->industries = app()->make(IndustryService::class)->getIndustriesForSelectDropDown();
@@ -21,6 +21,6 @@ class Industry extends Component
 
     public function render()
     {
-        return view('livewire.dashboard.industry');
+        return view('livewire.Dashboard.Industry');
     }
 }
